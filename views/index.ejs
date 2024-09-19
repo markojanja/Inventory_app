@@ -6,6 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    hello testing index page
+    <main>
+      <h1>Welcome to InventoryApp</h1>
+      <p>Easily and securely manage your inventory</p>
+      <% if (locals.message) { %>
+      <p>Hello, <%= message %>!</p>
+
+      <% } else { %>
+      <p>You are not logged in.</p>
+      <% } %>
+    </main>
   </body>
 </html>
