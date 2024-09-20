@@ -7,7 +7,8 @@ export const login = passport.authenticate("local", {
 
 // Logout route
 export const logout = (req, res) => {
-  req.logout();
-  req.session.destroy(); // Ensure the session is destroyed
-  res.redirect("/login");
+  req.logout((err) => {
+    if (err) return res.status(500).json({ message: "Error logging out" });
+    res.redirect("/admin/login");
+  });
 };

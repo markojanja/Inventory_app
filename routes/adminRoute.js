@@ -3,8 +3,14 @@ import { isAuth } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/dashboard", isAuth, (req, res) => {
+router.use(isAuth);
+
+router.get("/", (req, res) => {
   res.render("dashboard");
+});
+
+router.get("/create_category", (req, res) => {
+  res.send("create category form");
 });
 
 export default router;
