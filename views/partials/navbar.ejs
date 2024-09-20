@@ -1,7 +1,9 @@
 <nav>
   <h2>AdminDashboard</h2>
   <ul>
-    <li>Hello, Marko</li>
+    <% if (locals.user) { %>
+    <li>Hello, <%= user.username %></li>
     <li><a href="/admin/logout">LogOut</a></li>
+    <% } %>
   </ul>
 </nav>

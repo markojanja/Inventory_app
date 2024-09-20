@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <% if (!categories.length) { %>
+      <h1>No categories yet</h1>
+      <% } %> <% if (categories) { %> <% categories.forEach(category => { %>
+      <div>
+        <img
+          src="<%= category.imgurl %> "
+          alt="<%= category.slug %> "
+          height="300"
+          width="300"
+        />
+        <h3><%= category.title %></h3>
+        <a href="/admin/dashboard/category/<%= category.slug %> ">details</a>
+      </div>
+      <% }) %> <% } %>
+    </main>
+  </body>
+</html>

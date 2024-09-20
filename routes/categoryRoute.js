@@ -7,8 +7,9 @@ const { Category } = models;
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.send("category page");
+router.get("/", async (req, res) => {
+  const categories = await Category.findAll({});
+  res.render("categoryDash", { categories });
 });
 
 router
@@ -17,8 +18,16 @@ router
   })
   .post("/create", upload.single("image"), createCategory);
 
-router.get("/:id", (req, res) => {
-  res.send("category details page");
+router.get("/:slug", async (req, res) => {
+  const { slug } = req.params;
+  console.log(req.user.id);
+  try {
+    const category = await Category.findSlug(slug);
+    console.log(category);
+    res.status(200).render("categoryDetails", { category });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.get("/:id/update", (req, res) => {

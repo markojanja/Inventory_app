@@ -130,6 +130,27 @@ class Category {
       console.log(error);
     }
   }
+  async findSlug(slug, id) {
+    try {
+      const query = `
+      SELECT 
+        category.title, 
+        category.slug, 
+        category.imgurl, 
+        users.username AS username 
+      FROM 
+        category 
+      JOIN 
+        users ON category.user_id = users.id 
+      WHERE 
+        category.slug = $1;
+    `;
+      const { rows } = await pool.query(query, [slug]);
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //product categories
