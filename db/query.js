@@ -109,7 +109,7 @@ class Category {
       const fields = keys.join(", ");
       const placeholders = keys.map((_, i) => `$${i + 1}`).join(", ");
 
-      const query = `INSERT INTO category ${fields} VALUES ${placeholders} RETURNING *;`;
+      const query = `INSERT INTO category (${fields}) VALUES (${placeholders}) RETURNING *;`;
 
       const { rows } = await pool.query(query, values);
       return rows[0];
@@ -121,7 +121,8 @@ class Category {
     try {
       const query = limit
         ? "SELECT * FROM category LIMIT $1"
-        : "SELECT * FROM category";
+        : "SELECT * FROM category;";
+      console.log(query);
       const values = limit ? [limit] : [];
       const { rows } = await pool.query(query, values);
       return rows;
