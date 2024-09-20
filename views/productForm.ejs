@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <form
+        action="/admin/dashboard/product/create"
+        method="post"
+        enctype="multipart/form-data"
+        style="
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          margin: 0 auto;
+        "
+      >
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" />
+
+        <label for="description">Description</label>
+        <textarea name="description" id="description"></textarea>
+
+        <label for="slug">Slug</label>
+        <input type="text" id="slug" name="slug" />
+
+        <label for="stock">Stock</label>
+        <input type="number" id="stock" name="stock" />
+
+        <label for="price">Price</label>
+        <input type="number" id="price" name="price" step="0.01" />
+
+        <label for="imageurl">Image</label>
+        <input type="file" id="image" name="image" accept="image/*" />
+
+        <label for="categories">Select Categories:</label>
+        <% categories.forEach(category => { %>
+        <div>
+          <input
+            type="checkbox"
+            name="categories"
+            id="<%= category.name %>"
+            value="<%= category.id %>"
+          />
+          <label style="color: black" for="<%= category.name %>"
+            ><%= category.name %></label
+          >
+        </div>
+        <% }) %>
+
+        <button type="submit">Save</button>
+      </form>
+    </main>
+    <script src="/main.js"></script>
+  </body>
+</html>

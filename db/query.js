@@ -70,7 +70,7 @@ class Product {
 
       const fields = keys.join(", ");
       const placeholders = keys.map((_, i) => `$${i + 1}`).join(", ");
-      const query = `INSERT INTO users (${fields}) VALUES (${placeholders}) RETURNING *`;
+      const query = `INSERT INTO products (${fields}) VALUES (${placeholders}) RETURNING *`;
 
       const { rows } = await pool.query(query, values);
 
@@ -80,17 +80,38 @@ class Product {
     }
   }
 
-  async findAll({ limit }) {
+  async findAll() {
     try {
-      const query = limit
-        ? "SELECT * FROM products LIMIT $1"
-        : "SELECT * FROM products";
-      const values = limit ? [limit] : [];
-      const { rows } = await pool.query(query, values);
+      const query = `
+      SELECT 
+        p.id, 
+        p.title, 
+        p.description, 
+        p.price, 
+        p.imageurl,
+        JSON_AGG(
+        JSON_BUILD_OBJECT('title', c.title, 'slug', c.slug)) AS categories
+      FROM 
+        products p
+      LEFT JOIN 
+        products_category pc ON p.id = pc.product_id
+      LEFT JOIN 
+        category c ON pc.category_id = c.id
+      GROUP BY 
+        p.id;
+    `;
+      const { rows } = await pool.query(query);
       return rows;
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async addProductCat(newProduct_id, categoryId) {
+    await pool.query(
+      "INSERT INTO products_category (product_id, category_id) VALUES ($1, $2);",
+      [newProduct_id, categoryId]
+    );
   }
 }
 
@@ -122,7 +143,6 @@ class Category {
       const query = limit
         ? "SELECT * FROM category LIMIT $1"
         : "SELECT * FROM category;";
-      console.log(query);
       const values = limit ? [limit] : [];
       const { rows } = await pool.query(query, values);
       return rows;
