@@ -96,11 +96,47 @@ class Product {
 
 //categories
 
+class Category {
+  async create(userData = {}) {
+    try {
+      const keys = Object.keys(userData);
+      const values = Object.values(userData);
+
+      if (keys.length === 0) {
+        throw new Error("No data to be inserted");
+      }
+
+      const fields = keys.join(", ");
+      const placeholders = keys.map((_, i) => `$${i + 1}`).join(", ");
+
+      const query = `INSERT INTO category ${fields} VALUES ${placeholders} RETURNING *;`;
+
+      const { rows } = await pool.query(query, values);
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async findAll({ limit }) {
+    try {
+      const query = limit
+        ? "SELECT * FROM category LIMIT $1"
+        : "SELECT * FROM category";
+      const values = limit ? [limit] : [];
+      const { rows } = await pool.query(query, values);
+      return rows;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+
 //product categories
 
 const models = {
   User: new User(),
   Product: new Product(),
+  Category: new Category(),
 };
 
 export default models;
