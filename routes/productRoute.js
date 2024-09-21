@@ -48,7 +48,7 @@ router
       console.log(error);
     }
 
-    res.redirect("/");
+    res.redirect("/admin/dashboard/product");
   });
 
 router.get("/:slug", async (req, res) => {

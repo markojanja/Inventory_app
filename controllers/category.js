@@ -16,5 +16,5 @@ export const createCategory = async (req, res) => {
 
   await Category.create(data);
 
-  res.status(201).render("categoryForm");
+  res.status(201).redirect("/admin/dashboard/category");
 };
