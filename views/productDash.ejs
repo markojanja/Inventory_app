@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
     <title>Products</title>
   </head>
   <body>
@@ -13,8 +14,8 @@
       <h2><%= product.title %></h2>
       <p><%= product.description %></p>
       <p>Price: <%= product.price %></p>
-      <img src="<%= product.imageurl %>" alt="<%= product.title %> Image" />
-      <a href="<%= product.slug %>">Details</a>
+      <img src="<%= product.imageurl %>" alt="<%= product.title %>" />
+      <a href="product/<%= product.slug %>">Details</a>
       <h3>Categories:</h3>
       <ul>
         <% product.categories.forEach(category => { %>

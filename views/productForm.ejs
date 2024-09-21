@@ -42,12 +42,10 @@
           <input
             type="checkbox"
             name="categories"
-            id="<%= category.name %>"
+            id="<%= category.title %>"
             value="<%= category.id %>"
           />
-          <label style="color: black" for="<%= category.name %>"
-            ><%= category.name %></label
-          >
+          <label for="<%= category.title %>"><%= category.title %></label>
         </div>
         <% }) %>
 

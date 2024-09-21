@@ -87,6 +87,7 @@ class Product {
         p.id, 
         p.title, 
         p.description, 
+        p.slug,
         p.price, 
         p.imageurl,
         JSON_AGG(
@@ -98,7 +99,9 @@ class Product {
       LEFT JOIN 
         category c ON pc.category_id = c.id
       GROUP BY 
-        p.id;
+        p.id
+      ORDER BY
+	    	p.id DESC;
     `;
       const { rows } = await pool.query(query);
       return rows;

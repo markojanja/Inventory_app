@@ -22,6 +22,8 @@ router
     const id = req.user.id;
     const imageurl = `/uploads/${req.file?.filename}`;
 
+    console.log(req.body);
+
     const productData = {
       title,
       description,
@@ -34,9 +36,11 @@ router
 
     try {
       const newProduct = await Product.create(productData);
+      const catArr = [...categories];
+      console.log(catArr);
 
-      if (Array.isArray(categories)) {
-        for (const categoryId of categories) {
+      if (Array.isArray(catArr)) {
+        for (const categoryId of catArr) {
           await Product.addProductCat(newProduct.id, categoryId);
         }
       }
@@ -44,7 +48,7 @@ router
       console.log(error);
     }
 
-    res.redirect("create");
+    res.redirect("/");
   });
 
 router.get("/:slug", async (req, res) => {
