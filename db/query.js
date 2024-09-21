@@ -106,6 +106,18 @@ class Product {
       console.log(error);
     }
   }
+  async findBySlug(slug) {
+    try {
+      const query = `
+      SELECT title, description, slug , stock , price, imageurl FROM products WHERE slug=$1; 
+      `;
+      const { rows } = await pool.query(query, [slug]);
+
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   async addProductCat(newProduct_id, categoryId) {
     await pool.query(

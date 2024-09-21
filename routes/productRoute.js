@@ -47,8 +47,15 @@ router
     res.redirect("create");
   });
 
-router.get("/:slug", (req, res) => {
-  res.send("product details page");
+router.get("/:slug", async (req, res) => {
+  const { slug } = req.params;
+  try {
+    const product = await Product.findBySlug(slug);
+
+    res.status(200).render("productDetails", { product });
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 router.get("/:id/update", (req, res) => {

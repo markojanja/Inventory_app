@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>product</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1><%= product.title %></h1>
+        <p><%= product.description %></p>
+        <img
+          src="<%= product.imageurl %>"
+          alt="<%= product.title %>"
+          height="200"
+          width="200"
+        />
+        <p><%= product.slug %></p>
+        <p>stock: <%= product.stock%></p>
+        <p>price: <%= product.price%></p>
+      </div>
+    </main>
+  </body>
+</html>
