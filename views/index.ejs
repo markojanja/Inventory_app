@@ -11,5 +11,20 @@
       <p>Easily and securely manage your inventory</p>
       <a href="/admin/dashboard">Login</a>
     </main>
+    <h2>Latest from Inventory:</h2>
+    <section style="display: flex; gap: 2rem">
+      <% if (products) { %> <% products.forEach(product => { %>
+      <div>
+        <img
+          src="<%= product.imageurl %> "
+          alt=""
+          srcset=""
+          height="400"
+          width="400"
+        />
+        <p><%= product.title%></p>
+      </div>
+      <% }) %> <% } %>
+    </section>
   </body>
 </html>

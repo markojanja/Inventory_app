@@ -7,7 +7,7 @@ const { Product, Category } = models;
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-  const products = await Product.findAll();
+  const products = await Product.findAll({});
   console.log(products);
   res.render("productDash", { products });
 });

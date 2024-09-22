@@ -80,9 +80,32 @@ class Product {
     }
   }
 
-  async findAll() {
+  async findAll({ limit }) {
     try {
-      const query = `
+      const query = limit
+        ? `
+      SELECT 
+        p.id, 
+        p.title, 
+        p.description, 
+        p.slug,
+        p.price, 
+        p.imageurl,
+        JSON_AGG(
+        JSON_BUILD_OBJECT('title', c.title, 'slug', c.slug)) AS categories
+      FROM 
+        products p
+      LEFT JOIN 
+        products_category pc ON p.id = pc.product_id
+      LEFT JOIN 
+        category c ON pc.category_id = c.id
+      GROUP BY 
+        p.id
+      ORDER BY
+	    	p.id DESC
+      LIMIT $1  ;
+    `
+        : `
       SELECT 
         p.id, 
         p.title, 
@@ -103,7 +126,8 @@ class Product {
       ORDER BY
 	    	p.id DESC;
     `;
-      const { rows } = await pool.query(query);
+      const value = limit ? [limit] : [];
+      const { rows } = await pool.query(query, value);
       return rows;
     } catch (error) {
       console.log(error);
