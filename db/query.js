@@ -210,6 +210,31 @@ class Category {
       console.log(error);
     }
   }
+  async findProductsBySlug(slug) {
+    const query = `SELECT 
+      p.id, 
+      p.title, 
+      p.description, 
+      p.price, 
+      p.imageurl,
+      JSON_AGG(
+        JSON_BUILD_OBJECT('title', c.title, 'slug', c.slug)
+      ) AS categories
+    FROM 
+      products p
+    JOIN 
+      products_category pc ON p.id = pc.product_id
+    JOIN 
+      category c ON pc.category_id = c.id
+    WHERE c.slug=$1
+    GROUP BY 
+      p.id
+    ORDER BY p.id ;`;
+
+    const { rows } = await pool.query(query, [slug]);
+
+    return rows;
+  }
 }
 
 //product categories

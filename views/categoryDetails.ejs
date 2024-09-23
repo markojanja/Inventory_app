@@ -17,7 +17,11 @@
         width="200"
       />
       <p>added by: <%= category.username %></p>
-      <% } %>
+
+      <h2>ProductList:</h2>
+      <% products.forEach(product => { %>
+      <h3><%= product.title %></h3>
+      <% }) %> <% } %>
     </main>
   </body>
 </html>

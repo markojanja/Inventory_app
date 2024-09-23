@@ -23,8 +23,10 @@ router.get("/:slug", async (req, res) => {
   console.log(req.user.id);
   try {
     const category = await Category.findSlug(slug);
+    const products = await Category.findProductsBySlug(slug);
+    console.log("here are products....", products);
     console.log(category);
-    res.status(200).render("categoryDetails", { category });
+    res.status(200).render("categoryDetails", { category, products });
   } catch (error) {
     console.log(error);
   }
