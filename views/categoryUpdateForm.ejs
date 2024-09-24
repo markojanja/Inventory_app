@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form
+      action="/admin/dashboard/category/<%= category.slug %>/update"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <label for="title">title</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        value="<%= category.title %>"
+      />
+      <label for="slug"></label>
+      <input type="text" id="slug" name="slug" value="<%= category.slug%>" />
+      <label for="image">image</label>
+      <input type="file" id="image" name="image" accept="image/*" />
+      <input type="hidden" name="currentImage" value="<%= category.imgurl %>" />
+      <button type="submit">save</button>
+    </form>
+    <script src="/main.js"></script>
+  </body>
+</html>

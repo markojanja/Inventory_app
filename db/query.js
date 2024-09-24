@@ -181,7 +181,7 @@ class Category {
     try {
       const query = limit
         ? "SELECT * FROM category LIMIT $1"
-        : "SELECT * FROM category;";
+        : "SELECT * FROM category ORDER BY created_at;";
       const values = limit ? [limit] : [];
       const { rows } = await pool.query(query, values);
       return rows;
@@ -189,7 +189,7 @@ class Category {
       console.log(error);
     }
   }
-  async findSlug(slug, id) {
+  async findSlug(slug) {
     try {
       const query = `
       SELECT 
@@ -200,7 +200,7 @@ class Category {
       FROM 
         category 
       JOIN 
-        users ON category.user_id = users.id 
+        users ON category.user_id = users.id
       WHERE 
         category.slug = $1;
     `;
@@ -234,6 +234,12 @@ class Category {
     const { rows } = await pool.query(query, [slug]);
 
     return rows;
+  }
+  async updateCategory(title, slug, imgurl, userId, oldSlug) {
+    const query = `
+      UPDATE category SET title=$1, slug=$2, imgurl=$3, user_id=$4 WHERE slug=$5
+    `;
+    await pool.query(query, [title, slug, imgurl, userId, oldSlug]);
   }
 }
 

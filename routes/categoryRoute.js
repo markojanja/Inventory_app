@@ -25,16 +25,37 @@ router.get("/:slug", async (req, res) => {
     const category = await Category.findSlug(slug);
     const products = await Category.findProductsBySlug(slug);
     console.log("here are products....", products);
-    console.log(category);
     res.status(200).render("categoryDetails", { category, products });
   } catch (error) {
     console.log(error);
   }
 });
 
-router.get("/:id/update", (req, res) => {
-  res.send("update category form");
-});
+router
+  .get("/:slug/update", async (req, res) => {
+    const category = await Category.findSlug(req.params.slug);
+
+    res.status(200).render("categoryUpdateForm", { category });
+  })
+  .post("/:slug/update", upload.single("image"), async (req, res) => {
+    const { title, slug, currentImage } = req.body;
+    const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
+    const oldSlug = req.params.slug;
+    const { id } = req.user;
+
+    try {
+      await Category.updateCategory(
+        title,
+        slug.toLowerCase().trim(),
+        imgUrl,
+        id,
+        oldSlug
+      );
+      res.status(201).redirect("/admin/dashboard/category");
+    } catch (error) {
+      console.log(error);
+    }
+  });
 router.get("/:id/delete", (req, res) => {
   res.send("delete category form");
 });
