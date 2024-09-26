@@ -18,3 +18,48 @@ export const createCategory = async (req, res) => {
 
   res.status(201).redirect("/admin/dashboard/category");
 };
+
+export const categoryDetails = async (req, res) => {
+  const { slug } = req.params;
+
+  try {
+    const category = await Category.findSlug(slug);
+    const products = await Category.findProductsBySlug(slug);
+    // console.log("here are products....", products);
+    res.status(200).render("admin/categoryDetails", { category, products });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const categoriesUpdateGet = async (req, res) => {
+  const category = await Category.findSlug(req.params.slug);
+  res.status(200).render("admin/categoryUpdateForm", { category });
+};
+
+export const categoryUpdate = async (req, res) => {
+  const { title, slug, currentImage } = req.body;
+  const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
+  const oldSlug = req.params.slug;
+  const { id } = req.user;
+  try {
+    await Category.updateCategory(
+      title,
+      slug.toLowerCase().trim(),
+      imgUrl,
+      id,
+      oldSlug
+    );
+    res.status(201).redirect("/admin/dashboard/category");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const categoryDelete = async (req, res) => {
+  const { slug } = req.params;
+
+  console.log(slug);
+
+  res.send("delete category form");
+};
