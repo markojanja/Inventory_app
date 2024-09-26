@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(isAuth);
 
 router.get("/", (req, res) => {
-  res.render("dashboard");
+  res.render("admin/dashboard");
 });
 
 router.use("/product", productRouter);

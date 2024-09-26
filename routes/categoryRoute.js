@@ -9,12 +9,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const categories = await Category.findAll({});
-  res.render("categoryDash", { categories });
+  res.render("admin/categoryDash", { categories });
 });
 
 router
   .get("/create", (req, res) => {
-    res.status(200).render("categoryForm");
+    res.status(200).render("admin/categoryForm");
   })
   .post("/create", upload.single("image"), createCategory);
 
@@ -25,7 +25,7 @@ router.get("/:slug", async (req, res) => {
     const category = await Category.findSlug(slug);
     const products = await Category.findProductsBySlug(slug);
     console.log("here are products....", products);
-    res.status(200).render("categoryDetails", { category, products });
+    res.status(200).render("admin/categoryDetails", { category, products });
   } catch (error) {
     console.log(error);
   }
@@ -35,7 +35,7 @@ router
   .get("/:slug/update", async (req, res) => {
     const category = await Category.findSlug(req.params.slug);
 
-    res.status(200).render("categoryUpdateForm", { category });
+    res.status(200).render("admin/categoryUpdateForm", { category });
   })
   .post("/:slug/update", upload.single("image"), async (req, res) => {
     const { title, slug, currentImage } = req.body;

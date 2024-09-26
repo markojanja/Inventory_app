@@ -5,7 +5,7 @@ const home = async (req, res) => {
     const products = await models.Product.findAll({ limit: 4 });
     console.log(products.length);
 
-    res.status(200).render("index", { products });
+    res.status(200).render("public/index", { products });
   } catch (error) {
     console.log(error);
   }

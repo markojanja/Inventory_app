@@ -9,13 +9,13 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const products = await Product.findAll({});
   console.log(products);
-  res.render("productDash", { products });
+  res.render("admin/productDash", { products });
 });
 
 router
   .get("/create", async (req, res) => {
     const categories = await Category.findAll({});
-    res.status(200).render("productForm", { categories });
+    res.status(200).render("admin/productForm", { categories });
   })
   .post("/create", upload.single("image"), async (req, res) => {
     const { title, description, slug, stock, price, categories } = req.body;
@@ -56,7 +56,7 @@ router.get("/:slug", async (req, res) => {
   try {
     const product = await Product.findBySlug(slug);
 
-    res.status(200).render("productDetails", { product });
+    res.status(200).render("admin/productDetails", { product });
   } catch (error) {
     console.log(error);
   }

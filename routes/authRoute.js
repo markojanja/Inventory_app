@@ -6,7 +6,7 @@ const router = express.Router();
 
 router
   .get("/login", redirectIfAuthenticated, (req, res) => {
-    res.status(200).render("login");
+    res.status(200).render("admin/login");
   })
   .post("/login", login);
 
