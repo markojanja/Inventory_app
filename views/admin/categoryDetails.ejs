@@ -18,7 +18,9 @@
       />
       <a href="<%= category.slug %>/update ">Edit</a>
       <p>added by: <%= category.username %></p>
-
+      <form action="<%= category.slug %>/delete" method="POST">
+        <button type="submit">delete</button>
+      </form>
       <h2>ProductList:</h2>
       <% products.forEach(product => { %>
       <h3><%= product.title %></h3>

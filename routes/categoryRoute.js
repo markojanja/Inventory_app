@@ -7,7 +7,7 @@ import {
   categoryDetails,
   categoryUpdate,
   createCategory,
-} from "../controllers/category.js";
+} from "../controllers/adminCategory.js";
 
 const { Category } = models;
 
@@ -30,6 +30,6 @@ router
   .get("/:slug/update", categoriesUpdateGet)
   .post("/:slug/update", upload.single("image"), categoryUpdate);
 
-router.get("/:slug/delete", categoryDelete);
+router.post("/:slug/delete", categoryDelete);
 
 export default router;

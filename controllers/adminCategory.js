@@ -5,7 +5,7 @@ const { Category } = models;
 export const createCategory = async (req, res) => {
   const { title, slug } = req.body;
   const id = req.user.id;
-  const imgUrl = `/uploads/${req.file.filename}`;
+  const imgUrl = req.file ? `/uploads/${req.file.filename}` : "";
 
   const data = {
     title,
@@ -59,7 +59,12 @@ export const categoryUpdate = async (req, res) => {
 export const categoryDelete = async (req, res) => {
   const { slug } = req.params;
 
-  console.log(slug);
+  try {
+    await Category.deleteCategory(slug);
+    console.log("deleted project");
 
-  res.send("delete category form");
+    res.redirect("/admin/dashboard");
+  } catch (error) {
+    console.log(error);
+  }
 };

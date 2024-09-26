@@ -236,10 +236,25 @@ class Category {
     return rows;
   }
   async updateCategory(title, slug, imgurl, userId, oldSlug) {
-    const query = `
-      UPDATE category SET title=$1, slug=$2, imgurl=$3, user_id=$4 WHERE slug=$5
-    `;
-    await pool.query(query, [title, slug, imgurl, userId, oldSlug]);
+    try {
+      const query = `
+        UPDATE category SET title=$1, slug=$2, imgurl=$3, user_id=$4 WHERE slug=$5
+      `;
+      await pool.query(query, [title, slug, imgurl, userId, oldSlug]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async deleteCategory(slug) {
+    try {
+      const query = `
+      DELETE FROM category WHERE slug=$1
+      `;
+      await pool.query(query, [slug]);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 
