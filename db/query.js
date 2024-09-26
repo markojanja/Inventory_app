@@ -136,7 +136,24 @@ class Product {
   async findBySlug(slug) {
     try {
       const query = `
-      SELECT title, description, slug , stock , price, imageurl FROM products WHERE slug=$1; 
+     SELECT 
+        p.id, 
+        p.title, 
+        p.description, 
+        p.slug,
+        p.price, 
+        p.imageurl,
+        JSON_AGG(
+        JSON_BUILD_OBJECT('title', c.title, 'slug', c.slug)) AS categories
+      FROM 
+        products p
+      LEFT JOIN 
+        products_category pc ON p.id = pc.product_id
+      LEFT JOIN 
+        category c ON pc.category_id = c.id
+      WHERE p.slug = $1   
+      GROUP BY 
+        p.id; 
       `;
       const { rows } = await pool.query(query, [slug]);
 

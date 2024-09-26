@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const products = await Product.findAll({});
-  console.log(products);
+  // console.log(products);
   res.render("admin/productDash", { products });
 });
 
@@ -22,7 +22,7 @@ router
     const id = req.user.id;
     const imageurl = `/uploads/${req.file?.filename}`;
 
-    console.log(req.body);
+    // console.log(req.body);
 
     const productData = {
       title,
@@ -37,8 +37,7 @@ router
     try {
       const newProduct = await Product.create(productData);
       const catArr = [...categories];
-      console.log(catArr);
-
+      // console.log(catArr);
       if (Array.isArray(catArr)) {
         for (const categoryId of catArr) {
           await Product.addProductCat(newProduct.id, categoryId);
@@ -62,8 +61,21 @@ router.get("/:slug", async (req, res) => {
   }
 });
 
-router.get("/:id/update", (req, res) => {
-  res.send("update product form");
+router.get("/:slug/update", async (req, res) => {
+  const { slug } = req.params;
+  const product = await Product.findBySlug(slug);
+
+  const categories = await Category.findAll({});
+
+  const matchingCategoryTitles = categories
+    .filter((category) =>
+      product.categories.some((cat) => cat.slug === category.slug)
+    )
+    .map((category) => category.title);
+
+  console.log(matchingCategoryTitles);
+
+  res.render("admin/productUpdateForm");
 });
 router.get("/:id/delete", (req, res) => {
   res.send("delete product form");
