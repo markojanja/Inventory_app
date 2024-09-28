@@ -100,8 +100,15 @@ router
     }
   });
 
-router.get("/:id/delete", (req, res) => {
-  res.send("delete product form");
+router.post("/:slug/delete", async (req, res) => {
+  const { slug } = req.params;
+  console.log(slug);
+  try {
+    await Product.deleteProduct(slug);
+    res.redirect("/admin/dashboard/product");
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 export default router;

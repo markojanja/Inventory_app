@@ -199,6 +199,15 @@ class Product {
       console.log(error);
     }
   }
+
+  async deleteProduct(slug) {
+    try {
+      const query = `DELETE FROM products WHERE slug=$1`;
+      await pool.query(query, [slug]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //categories
