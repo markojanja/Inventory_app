@@ -141,6 +141,7 @@ class Product {
         p.title, 
         p.description, 
         p.slug,
+        p.stock,
         p.price, 
         p.imageurl,
         JSON_AGG(
@@ -168,6 +169,35 @@ class Product {
       "INSERT INTO products_category (product_id, category_id) VALUES ($1, $2);",
       [newProduct_id, categoryId]
     );
+  }
+
+  async update(title, description, slug, stock, price, imageurl, oldSlug) {
+    try {
+      const query = `
+      UPDATE products SET title=$1, description=$2, slug=$3, stock=$4, price=$5, imageUrl=$6 WHERE slug=$7 RETURNING *;
+      `;
+      const { rows } = await pool.query(query, [
+        title,
+        description,
+        slug,
+        stock,
+        price,
+        imageurl,
+        oldSlug,
+      ]);
+
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async deleteProductCategories(id) {
+    try {
+      const query = `DELETE FROM products_category WHERE product_id=$1;`;
+      await pool.query(query, [id]);
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
 

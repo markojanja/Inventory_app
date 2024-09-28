@@ -61,22 +61,45 @@ router.get("/:slug", async (req, res) => {
   }
 });
 
-router.get("/:slug/update", async (req, res) => {
-  const { slug } = req.params;
-  const product = await Product.findBySlug(slug);
+router
+  .get("/:slug/update", async (req, res) => {
+    const { slug } = req.params;
+    const product = await Product.findBySlug(slug);
+    const categories = await Category.findAll({});
 
-  const categories = await Category.findAll({});
+    res.render("admin/productUpdateForm", { product, categories });
+  })
+  .post("/:slug/update", upload.single("image"), async (req, res) => {
+    const { title, description, slug, stock, price, currentImage, categories } =
+      req.body;
+    const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
+    const oldSlug = req.params.slug;
+    try {
+      const newProduct = await Product.update(
+        title,
+        description,
+        slug,
+        stock,
+        price,
+        imgUrl,
+        oldSlug
+      );
 
-  const matchingCategoryTitles = categories
-    .filter((category) =>
-      product.categories.some((cat) => cat.slug === category.slug)
-    )
-    .map((category) => category.title);
+      await Product.deleteProductCategories(newProduct.id);
 
-  console.log(matchingCategoryTitles);
+      if (categories) {
+        const catArr = [...categories];
+        for (const cat of catArr) {
+          await Product.addProductCat(parseInt(newProduct.id), parseInt(cat));
+        }
+      }
 
-  res.render("admin/productUpdateForm");
-});
+      res.redirect("/admin/dashboard/product/" + slug);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
 router.get("/:id/delete", (req, res) => {
   res.send("delete product form");
 });
