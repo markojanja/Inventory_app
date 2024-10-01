@@ -2,8 +2,148 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
+  scroll-behavior: smooth;
+  scroll-padding: 10vh;
 }
 
 img {
   object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 2rem;
+  color: aliceblue;
+  min-height: 10vh;
+}
+
+.navbar a {
+  color: aliceblue;
+}
+
+.nav-logo {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.banner {
+  min-height: 95vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 6, 23, 1) 0%,
+    rgba(65, 7, 79, 1) 50%,
+    rgba(110, 17, 116, 1) 100%
+  );
+}
+.banner h1 {
+  font-size: 4rem;
+  color: aliceblue;
+  font-weight: 900;
+}
+.banner p {
+  font-size: 1.2rem;
+  color: rgb(224, 220, 220);
+}
+
+.products-section,
+.category-section {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1rem;
+  gap: 5rem;
+  padding: 2rem;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: start;
+}
+
+.products-section {
+  background: #020617;
+  color: aliceblue;
+}
+
+.category-section {
+  background: linear-gradient(
+    180deg,
+    rgba(2, 6, 23, 1) 0%,
+    rgba(65, 7, 79, 1) 50%,
+    rgba(110, 17, 116, 1) 100%
+  );
+  color: aliceblue;
+}
+
+.grid-container {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  width: 80%;
+  margin: 0 auto;
+  height: 100%;
+  place-content: center;
+}
+
+.products-section h2,
+.category-section h2 {
+  grid-column: 1/-1;
+  font-size: 2.5rem;
+  font-weight: 900;
+  padding: 1rem;
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.grid-container img {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease-in;
+}
+
+.grid-container img:hover {
+  scale: 1.1;
+}
+.grid-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  min-width: 300px;
+}
+.category-title {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  color: white;
+  font-weight: bold;
+  z-index: 3;
 }

@@ -7,25 +7,38 @@
     <title>Document</title>
   </head>
   <body>
-    <main>
+    <%- include('partials/nav') %>
+    <main class="banner">
       <h1>Welcome to InventoryApp</h1>
       <p>Easily and securely manage your inventory</p>
-      <a href="/admin/dashboard">Login</a>
     </main>
-    <h2>Latest from Inventory:</h2>
-    <section style="display: flex; gap: 2rem">
-      <% if (products) { %> <% products.forEach(product => { %>
-      <div>
-        <img
-          src="<%= product.imageurl %> "
-          alt=""
-          srcset=""
-          height="400"
-          width="400"
-        />
-        <p><%= product.title%></p>
+    <section class="products-section">
+      <h2 id="products">Latest products</h2>
+      <div class="grid-container">
+        <% if (products) { %> <% products.forEach(product => { %>
+        <div class="grid-card">
+          <div class="grid-overlay"></div>
+          <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
+          <p class="category-title"><%= product.title%></p>
+        </div>
+        <% }) %> <% } %>
       </div>
-      <% }) %> <% } %>
+    </section>
+
+    <section class="category-section">
+      <h2 id="category">Latest categories</h2>
+      <div class="grid-container">
+        <% if (categories) { %> <% categories.forEach(category => { %>
+        <div class="grid-card">
+          <div class="grid-overlay"></div>
+          <img src="<%= category.imgurl %> " alt="<%= category.title %> " />
+          <p class="category-title"><%= category.title%></p>
+        </div>
+        <% }) %> <% } %>
+      </div>
+      <button style="width: 150px; align-self: center; padding: 10px">
+        Learn more
+      </button>
     </section>
   </body>
 </html>
