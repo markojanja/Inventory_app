@@ -9,8 +9,16 @@
   <body>
     <%- include('partials/nav') %>
     <main class="banner">
-      <h1>Welcome to InventoryApp</h1>
-      <p>Easily and securely manage your inventory</p>
+      <div class="container">
+        <div class="banner-content">
+          <h1>Welcome to InventoryApp</h1>
+          <p>Easily and securely manage your inventory</p>
+          <button>Learn more</button>
+        </div>
+        <div class="banner-image">
+          <img src="/assets/banner.svg" alt="" />
+        </div>
+      </div>
     </main>
     <section class="products-section">
       <h2 id="products">Latest products</h2>
@@ -40,5 +48,35 @@
         Learn more
       </button>
     </section>
+    <section class="about-section">
+      <h2>About inventory</h2>
+      <div class="container">
+        <div class="about-img">
+          <img src="/assets/about.svg" alt="" />
+        </div>
+        <div class="about-content">
+          <h3>This project is done as part of Odin Project curriculum.</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
+            tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
+            consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
+            quia!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
+            tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
+            consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
+            quia!
+          </p>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
+            tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
+            consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
+            quia!
+          </p>
+        </div>
+      </div>
+    </section>
+    <script src="/navbar.js"></script>
   </body>
 </html>
