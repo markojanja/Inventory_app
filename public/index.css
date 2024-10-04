@@ -61,12 +61,13 @@ a {
   );
 }
 .banner h1 {
-  font-size: 4rem;
+  font-size: clamp(1.5rem, 3vw, 4rem);
   color: aliceblue;
   font-weight: 900;
+  line-height: 2;
 }
 .banner p {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.2vw, 2.5rem);
   color: rgb(224, 220, 220);
 }
 
