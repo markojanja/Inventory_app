@@ -16,15 +16,34 @@ a {
   text-decoration: none;
   color: black;
 }
+.btn-primary {
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgb(237, 4, 253);
+  border-radius: 0.5rem;
+  color: rgb(237, 4, 253);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  transition: all 0.2s ease-in-out;
+  max-width: 200px;
+  align-self: flex-start;
+}
+
+.btn-primary:hover {
+  color: aliceblue;
+  background-color: rgb(237, 4, 253);
+}
 .container {
   display: flex;
   justify-content: center;
-  align-items: stretch; /* Allow full height stretch */
+  align-items: stretch;
   width: 90%;
   margin: 0 auto;
-  height: 100%; /* Ensure container takes full height */
+  height: 100%;
 }
-
 .navbar {
   position: fixed;
   display: flex;
@@ -39,7 +58,7 @@ a {
 }
 
 .navbar.hidden {
-  transform: translateY(-100%); /* Moves navbar off-screen */
+  transform: translateY(-100%);
 }
 
 .navbar a {
@@ -60,6 +79,18 @@ a {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 1rem;
+}
+
+.heading-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading-link {
+  color: rgb(237, 4, 253);
+  font-weight: 700;
 }
 .banner {
   display: flex;
@@ -144,7 +175,7 @@ a {
   grid-column: 1/-1;
   font-size: 2.5rem;
   font-weight: 900;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
 .grid-overlay {
