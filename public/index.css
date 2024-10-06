@@ -14,7 +14,7 @@ img {
 
 a {
   text-decoration: none;
-  color: black;
+  color: aliceblue;
 }
 html,
 body {
@@ -52,6 +52,7 @@ body {
 .navbar {
   position: fixed;
   display: flex;
+  top: 0;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -257,4 +258,22 @@ body {
   padding: 2rem;
   flex: 1;
   height: 100%;
+}
+.about-header {
+  background: linear-gradient(
+    0deg,
+    rgba(2, 6, 23, 1) 0%,
+    rgba(65, 7, 79, 1) 40%,
+    rgba(110, 17, 116, 1) 100%
+  );
+  min-height: 30vh;
+  padding-top: 6rem;
+  display: flex;
+  align-items: start;
+  justify-content: center;
+}
+
+.about-header h2 {
+  font-size: 3rem;
+  font-weight: 900;
 }

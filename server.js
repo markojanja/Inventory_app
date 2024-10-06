@@ -4,11 +4,15 @@ import url from "url";
 import session from "express-session";
 import passport from "./config/passport.js";
 
-//routes
-import HomeRoute from "./routes/HomeRoute.js";
-import AboutRoute from "./routes/aboutRoute.js";
-import AuthRouter from "./routes/authRoute.js";
-import AdminRouter from "./routes/adminRoute.js";
+//public routes
+import HomeRoute from "./routes/public/homeRoute.js";
+import AboutRoute from "./routes/public/aboutRoute.js";
+import ProductRoute from "./routes/public/productsRoute.js";
+import CategoriesRoute from "./routes/public/categoriesRoute.js";
+//private routes
+import AuthRouter from "./routes/admin/authRoute.js";
+import AdminRouter from "./routes//admin/adminRoute.js";
+
 //custom middleware
 import setHeaders from "./middleware/setHeaders.js";
 import getUser from "./middleware/getUser.js";
@@ -43,6 +47,8 @@ app.use(getUser);
 
 app.use("/", HomeRoute);
 app.use("/about", AboutRoute);
+app.use("/products", ProductRoute);
+app.use("/categories", CategoriesRoute);
 app.use("/admin", AuthRouter);
 app.use("/admin/dashboard", AdminRouter);
 

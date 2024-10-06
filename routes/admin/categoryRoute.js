@@ -1,22 +1,20 @@
 import express from "express";
-import { upload } from "../config/multerConfig.js";
-import models from "../db/query.js";
+import { upload } from "../../config/multerConfig.js";
+import models from "../../db/query.js";
 import {
   categoriesUpdateGet,
   categoryDelete,
   categoryDetails,
   categoryUpdate,
   createCategory,
-} from "../controllers/adminCategory.js";
+  getAllCategories,
+} from "../../controllers/adminCategory.js";
 
 const { Category } = models;
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
-  const categories = await Category.findAll({});
-  res.render("admin/categoryDash", { categories });
-});
+router.get("/", getAllCategories);
 
 router
   .get("/create", (req, res) => {

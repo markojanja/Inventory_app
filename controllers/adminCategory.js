@@ -2,6 +2,14 @@ import models from "../db/query.js";
 
 const { Category } = models;
 
+export const getAllCategories = async (req, res) => {
+  const categories = await Category.findAll({});
+  if (!req.user) {
+    return res.render("public/categories", { categories });
+  }
+  res.render("admin/categoryDash", { categories });
+};
+
 export const createCategory = async (req, res) => {
   const { title, slug } = req.body;
   const id = req.user.id;

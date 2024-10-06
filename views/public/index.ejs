@@ -13,7 +13,7 @@
         <div class="banner-content">
           <h1>Welcome to InventoryApp</h1>
           <p>Easily and securely manage your inventory</p>
-          <button class="btn-primary">Learn more</button>
+          <a href="/about" class="btn-primary">Learn more</a>
         </div>
         <div class="banner-image">
           <img src="/assets/banner.svg" alt="" />
@@ -23,7 +23,7 @@
     <section class="products-section">
       <div class="heading-container">
         <h2 id="products">Latest products</h2>
-        <a href="#" class="heading-link">See all</a>
+        <a href="/products" class="heading-link">See all</a>
       </div>
       <div class="grid-container">
         <% if (products) { %> <% products.forEach(product => { %>
@@ -39,7 +39,7 @@
     <section class="category-section">
       <div class="heading-container">
         <h2 id="category">Latest categories</h2>
-        <a href="#" class="heading-link">See all</a>
+        <a href="/categories" class="heading-link">See all</a>
       </div>
       <div class="grid-container">
         <% if (categories) { %> <% categories.forEach(category => { %>

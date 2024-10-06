@@ -1,5 +1,5 @@
 import express from "express";
-import { isAuth } from "../middleware/authMiddleware.js";
+import { isAuth } from "../../middleware/authMiddleware.js";
 import productRouter from "./productRoute.js";
 import categoryRouter from "./categoryRoute.js";
 

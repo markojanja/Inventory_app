@@ -1,5 +1,5 @@
 import express from "express";
-import { upload } from "../config/multerConfig.js";
+import { upload } from "../../config/multerConfig.js";
 import {
   productCreateGet,
   productCreatePost,
@@ -8,7 +8,7 @@ import {
   productHomeGet,
   productUpdateGet,
   productUpdatePost,
-} from "../controllers/product.js";
+} from "../../controllers/adminProduct.js";
 
 const router = express.Router();
 

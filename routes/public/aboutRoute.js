@@ -1,5 +1,5 @@
 import express from "express";
-import { aboutGet } from "../controllers/about.js";
+import { aboutGet } from "../../controllers/about.js";
 
 const router = express.Router();
 

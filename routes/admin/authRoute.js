@@ -1,6 +1,6 @@
 import express from "express";
-import { login, logout } from "../controllers/auth.js";
-import { redirectIfAuthenticated } from "../middleware/authMiddleware.js";
+import { login, logout } from "../../controllers/auth.js";
+import { redirectIfAuthenticated } from "../../middleware/authMiddleware.js";
 
 const router = express.Router();
 
