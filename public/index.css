@@ -16,6 +16,11 @@ a {
   text-decoration: none;
   color: black;
 }
+html,
+body {
+  background-color: rgba(2, 6, 23, 1);
+  color: aliceblue;
+}
 .btn-primary {
   display: inline-block;
   outline: none;
@@ -242,7 +247,7 @@ a {
   justify-content: flex-start;
   gap: 1rem;
   flex: 1;
-  height: 100%; /* Full height */
+  height: 100%;
   padding: 2rem;
 }
 
@@ -251,5 +256,5 @@ a {
   box-sizing: border-box;
   padding: 2rem;
   flex: 1;
-  height: 100%; /* Full height */
+  height: 100%;
 }

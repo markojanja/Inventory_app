@@ -6,6 +6,7 @@ import passport from "./config/passport.js";
 
 //routes
 import HomeRoute from "./routes/HomeRoute.js";
+import AboutRoute from "./routes/aboutRoute.js";
 import AuthRouter from "./routes/authRoute.js";
 import AdminRouter from "./routes/adminRoute.js";
 //custom middleware
@@ -41,6 +42,7 @@ app.use(passport.session());
 app.use(getUser);
 
 app.use("/", HomeRoute);
+app.use("/about", AboutRoute);
 app.use("/admin", AuthRouter);
 app.use("/admin/dashboard", AdminRouter);
 
