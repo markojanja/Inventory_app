@@ -1,8 +1,12 @@
 import express from "express";
-import { productHomeGet } from "../../controllers/adminProduct.js";
+import {
+  productDetails,
+  getAllProducts,
+} from "../../controllers/publicProduct.js";
 
 const router = express.Router();
 
-router.get("/", productHomeGet);
+router.get("/", getAllProducts);
+router.get("/:slug", productDetails);
 
 export default router;

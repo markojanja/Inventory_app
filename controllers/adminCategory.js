@@ -4,9 +4,7 @@ const { Category } = models;
 
 export const getAllCategories = async (req, res) => {
   const categories = await Category.findAll({});
-  if (!req.user) {
-    return res.render("public/categories", { categories });
-  }
+
   res.render("admin/categoryDash", { categories });
 };
 
@@ -33,7 +31,7 @@ export const categoryDetails = async (req, res) => {
   try {
     const category = await Category.findSlug(slug);
     const products = await Category.findProductsBySlug(slug);
-    // console.log("here are products....", products);
+
     res.status(200).render("admin/categoryDetails", { category, products });
   } catch (error) {
     console.log(error);

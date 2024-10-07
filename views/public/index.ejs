@@ -32,7 +32,9 @@
         <div class="grid-card">
           <div class="grid-overlay"></div>
           <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
-          <p class="product-title"><%= product.title%></p>
+          <a href="/products/<%= product.slug %> " class="product-title"
+            ><%= product.title%></a
+          >
         </div>
         <% }) %> <% } %>
       </div>
@@ -51,7 +53,9 @@
         <div class="grid-card">
           <div class="grid-overlay"></div>
           <img src="<%= category.imgurl %> " alt="<%= category.title %> " />
-          <p class="category-title"><%= category.title%></p>
+          <a href="/categories/<%- category.slug %>" class="category-title"
+            ><%= category.title%></a
+          >
         </div>
         <% }) %> <% } %>
       </div>

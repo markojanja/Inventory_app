@@ -1,6 +1,5 @@
 import express from "express";
 import { upload } from "../../config/multerConfig.js";
-import models from "../../db/query.js";
 import {
   categoriesUpdateGet,
   categoryDelete,
@@ -9,8 +8,6 @@ import {
   createCategory,
   getAllCategories,
 } from "../../controllers/adminCategory.js";
-
-const { Category } = models;
 
 const router = express.Router();
 

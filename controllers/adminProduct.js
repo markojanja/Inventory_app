@@ -4,9 +4,7 @@ const { Product, Category } = models;
 
 export const productHomeGet = async (req, res) => {
   const products = await Product.findAll({});
-  if (!req.user) {
-    return res.render("public/products", { products });
-  }
+
   res.render("admin/productDash", { products });
 };
 

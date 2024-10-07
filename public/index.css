@@ -219,6 +219,9 @@ body {
 .category-title,
 .product-title {
   position: absolute;
+  background-color: #ed04fd;
+  padding: 0.4rem;
+  border-radius: 7px;
   top: 1rem;
   left: 1rem;
   color: white;
