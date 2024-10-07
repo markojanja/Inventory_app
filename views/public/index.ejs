@@ -23,7 +23,9 @@
     <section class="products-section">
       <div class="heading-container">
         <h2 id="products">Latest products</h2>
-        <a href="/products" class="heading-link">See all</a>
+        <a href="/products" class="heading-link"
+          >See all <img src="/assets/arrow.svg" alt="arrow"
+        /></a>
       </div>
       <div class="grid-container">
         <% if (products) { %> <% products.forEach(product => { %>
@@ -39,7 +41,10 @@
     <section class="category-section">
       <div class="heading-container">
         <h2 id="category">Latest categories</h2>
-        <a href="/categories" class="heading-link">See all</a>
+        <a href="/categories" class="heading-link"
+          >See all
+          <img src="/assets/arrow.svg" alt="arrow" />
+        </a>
       </div>
       <div class="grid-container">
         <% if (categories) { %> <% categories.forEach(category => { %>

@@ -88,6 +88,14 @@ body {
   font-size: 1rem;
 }
 
+.nav-links a {
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar a:hover {
+  color: #ed04fd;
+}
+
 .heading-container {
   display: flex;
   width: 80%;
@@ -98,6 +106,12 @@ body {
 .heading-link {
   color: #ed04fd;
   font-weight: 700;
+  display: flex;
+  gap: 0.5rem;
+}
+.heading-link img {
+  height: 1rem;
+  width: 1rem;
 }
 .banner {
   display: flex;
