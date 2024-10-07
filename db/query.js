@@ -89,6 +89,7 @@ class Product {
         p.title, 
         p.description, 
         p.slug,
+        p.stock,
         p.price, 
         p.imageurl,
         JSON_AGG(
@@ -111,6 +112,7 @@ class Product {
         p.title, 
         p.description, 
         p.slug,
+        p.stock,
         p.price, 
         p.imageurl,
         JSON_AGG(

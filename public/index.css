@@ -18,6 +18,7 @@ a {
 }
 html,
 body {
+  height: 100%;
   background-color: rgba(2, 6, 23, 1);
   color: aliceblue;
 }
@@ -95,7 +96,7 @@ body {
 }
 
 .heading-link {
-  color: rgb(237, 4, 253);
+  color: #ed04fd;
   font-weight: 700;
 }
 .banner {
@@ -260,13 +261,14 @@ body {
   height: 100%;
 }
 .about-header {
+  position: relative;
   background: linear-gradient(
     0deg,
     rgba(2, 6, 23, 1) 0%,
     rgba(65, 7, 79, 1) 40%,
     rgba(110, 17, 116, 1) 100%
   );
-  min-height: 30vh;
+  min-height: 30%;
   padding-top: 6rem;
   display: flex;
   align-items: start;
@@ -276,4 +278,49 @@ body {
 .about-header h2 {
   font-size: 3rem;
   font-weight: 900;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(2, 6, 23, 1);
+  color: aliceblue;
+  font-weight: 900;
+  padding: 2rem 0;
+  font-size: 1.2rem;
+}
+
+.footer a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.footer img {
+  height: 1.5rem;
+  width: 1.5rem;
+  transition: all 0.2s ease-in-out;
+  background-color: transparent;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100vh;
+}
+.wrapper section {
+  flex: 1;
+  height: 30%;
+}
+.info {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  padding: 0.5rem;
+  font-weight: 600;
 }

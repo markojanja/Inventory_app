@@ -7,13 +7,28 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include('partials/nav') %>
-    <header class="about-header">
-      <h2>Products</h2>
-    </header>
-    <section>
-      <% products.forEach(product => { %> <%= product.title %> <% }) %>
-    </section>
+    <div class="wrapper">
+      <%- include('partials/nav') %>
+      <header class="about-header">
+        <h2>Products</h2>
+      </header>
+      <section>
+        <div class="grid-container">
+          <% if (products) { %> <% products.forEach(product => { %>
+          <div class="grid-card">
+            <div class="grid-overlay"></div>
+            <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
+            <p class="category-title"><%= product.title%></p>
+            <div class="info">
+              <p>$ <%= product.price %></p>
+              <p>Stock:<%= product.stock %></p>
+            </div>
+          </div>
+          <% }) %> <% } %>
+        </div>
+      </section>
+      <%- include('partials/footer') %>
+    </div>
     <script src="/navbar.js"></script>
   </body>
 </html>
