@@ -7,14 +7,20 @@
     <title>Document</title>
   </head>
   <body>
-    <main>
-      <form action="/admin/login" method="POST">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" />
-        <label for="password"></label>
-        <input type="password" id="password" name="password" />
+    <main class="login">
+      <h2>LogIn</h2>
+      <form class="form" action="/admin/login" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
 
-        <button type="submit">LogIn</button>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button class="btn-primary" type="submit">LogIn</button>
       </form>
       <a href="/">Go back to home page</a>
     </main>
