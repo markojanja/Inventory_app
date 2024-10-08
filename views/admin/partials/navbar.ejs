@@ -1,9 +1,16 @@
-<nav>
-  <h2>AdminDashboard</h2>
-  <ul>
+<nav class="navbar-admin">
+  <div class="nav-logo-admin">
+    <h2>InventoryAdmin</h2>
+  </div>
+
+  <ul class="nav-links">
     <% if (locals.user) { %>
     <li>Hello, <%= user.username %></li>
-    <li><a href="/admin/logout">LogOut</a></li>
+    <li>
+      <button class="menu-btn">
+        <img src="/assets/menu.svg" alt="menu" />
+      </button>
+    </li>
     <% } %>
   </ul>
 </nav>

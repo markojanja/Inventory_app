@@ -6,6 +6,12 @@
   scroll-behavior: smooth;
   scroll-padding: 3rem;
 }
+html,
+body {
+  height: 100%;
+  background-color: rgba(2, 6, 23, 1);
+  color: aliceblue;
+}
 
 img {
   width: 100%;
@@ -16,12 +22,10 @@ a {
   text-decoration: none;
   color: aliceblue;
 }
-html,
-body {
-  height: 100%;
-  background-color: rgba(2, 6, 23, 1);
-  color: aliceblue;
+ul {
+  list-style: none;
 }
+
 .btn-primary {
   display: inline-block;
   outline: none;
@@ -63,6 +67,14 @@ body {
   backdrop-filter: blur(1.5rem);
   transition: transform 0.3s ease-in-out;
 }
+.navbar-admin {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 2rem;
+  color: aliceblue;
+}
 
 .navbar.hidden {
   transform: translateY(-100%);
@@ -72,9 +84,13 @@ body {
   color: aliceblue;
 }
 
-.nav-logo {
+.nav-logo,
+.nav-logo-admin {
   font-size: 1.2rem;
   text-transform: uppercase;
+}
+.nav-logo-admin {
+  text-transform: capitalize;
 }
 
 .nav-links {
@@ -83,7 +99,7 @@ body {
   justify-content: center;
   gap: 1rem;
   list-style: none;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -455,4 +471,65 @@ body {
 }
 .form-group input:focus {
   border: 2px solid #ed04fd;
+}
+/*admin page styles*/
+
+.dashboard {
+  /* position: relative; */
+  height: 100%;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15%;
+  transition: all 0.2s ease-in-out;
+  background-color: rgb(5, 11, 36);
+  transform: translateX(-150%);
+  padding: 2rem;
+  padding-top: 4rem;
+  gap: 2rem;
+  box-shadow: 5px 0px 15px rgba(110, 17, 116, 0.2);
+}
+.sidebar.hidden {
+  transform: translateX(0);
+}
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  gap: 1rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: capitalize;
+  width: 100%;
+}
+.sidebar ul li {
+  width: 100%;
+}
+.sidebar h3 {
+  font-size: 1.2rem;
+}
+.sidebar a {
+  transition: all 0.2s ease-in-out;
+}
+.sidebar a:hover {
+  color: #ed04fd;
+}
+
+.menu-btn {
+  height: 2rem;
+  width: 2rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+.menu-btn img {
+  height: 100%;
 }
