@@ -4,27 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
-    <title>product</title>
+    <title>Document</title>
   </head>
   <body>
-    <main>
-      <div>
-        <h1><%= product.title %></h1>
-        <p><%= product.description %></p>
-        <img
-          src="<%= product.imageurl %>"
-          alt="<%= product.title %>"
-          height="200"
-          width="200"
-        />
-        <p><%= product.slug %></p>
-        <p>stock: <%= product.stock%></p>
-        <p>price: <%= product.price%></p>
-        <a href="<%= product.slug %>/update">Update </a>
-        <form action="<%= product.slug %>/delete" method="POST">
-          <button>delete</button>
-        </form>
-      </div>
-    </main>
+    <div class="wrapper">
+      <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
+      <main class="product-details">
+        <div class="product-details-card">
+          <div class="product-details-image">
+            <div class="overlay"></div>
+            <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
+          </div>
+          <div class="product-info">
+            <h2><%= product.title %></h2>
+            <p><%= product.description %></p>
+            <div class="product-info-group">
+              <p>$ <%= product.price %></p>
+              <p>In stock:<%= product.stock %></p>
+            </div>
+            <div class="product-categories">
+              <% product.categories.forEach(category => { %>
+              <a
+                class="category-link"
+                href="/admin/dashboard/category/<%= category.slug %> "
+              >
+                <%= category.title %>
+              </a>
+              <% }) %>
+            </div>
+            <a href="/admin/dashboard/product/<%= product.slug %>/update"
+              >Edit</a
+            >
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="/sidebar.js"></script>
   </body>
 </html>

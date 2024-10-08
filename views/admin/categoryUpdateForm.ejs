@@ -7,6 +7,7 @@
     <title>Document</title>
   </head>
   <body>
+    <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
     <form
       action="/admin/dashboard/category/<%= category.slug %>/update"
       method="POST"
@@ -27,5 +28,6 @@
       <button type="submit">save</button>
     </form>
     <script src="/main.js"></script>
+    <script src="/sidebar.js"></script>
   </body>
 </html>
