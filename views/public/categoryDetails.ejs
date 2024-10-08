@@ -13,8 +13,9 @@
         <h2><%= category.title %></h2>
       </header>
       <section>
+        <% if (products.length) { %>
         <div class="grid-container">
-          <% if (products) { %> <% products.forEach(product => { %>
+          <% products.forEach(product => { %>
           <div class="grid-card">
             <div class="grid-overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
@@ -22,8 +23,13 @@
               ><%= product.title%></a
             >
           </div>
-          <% }) %> <% } %>
+          <% }) %>
         </div>
+        <% } else { %>
+        <div class="no-content">
+          <h2>There are no products in this category currently.</h2>
+        </div>
+        <% } %>
       </section>
       <%- include('partials/footer') %>
     </div>
