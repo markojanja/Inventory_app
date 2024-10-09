@@ -201,12 +201,11 @@ ul {
 .grid-container {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 300px);
   gap: 2rem;
   width: 80%;
   margin: 0 auto;
-  height: 100%;
-  place-content: center;
+  min-height: 40%;
 }
 
 .grid-overlay {
@@ -475,7 +474,6 @@ ul {
 /*admin page styles*/
 
 .dashboard {
-  /* position: relative; */
   height: 100%;
 }
 
@@ -590,4 +588,25 @@ ul {
   border-radius: 0.25rem;
   color: #ed04fd;
   background-color: transparent;
+  text-transform: capitalize;
+}
+
+.category-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  height: 100%;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.text-center {
+  text-align: center;
 }
