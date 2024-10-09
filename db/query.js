@@ -273,6 +273,7 @@ class Category {
       p.id, 
       p.title, 
       p.description, 
+      p.slug,
       p.price, 
       p.imageurl,
       JSON_AGG(

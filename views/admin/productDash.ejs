@@ -29,7 +29,11 @@
           <% product.categories.forEach(category => { %>
 
           <li>
-            <a href="category/<%= category.slug %>"><%= category.title %></a>
+            <a
+              class="category-link"
+              href="/admin/dashboard/category/<%= category.slug %>"
+              ><%= category.title %></a
+            >
           </li>
           <% }) %>
         </ul>

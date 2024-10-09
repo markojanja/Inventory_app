@@ -18,12 +18,13 @@
           <div class="grid-card">
             <div class="grid-overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
-            <a href="/products/<%= product.slug %> " class="product-title"
+            <a href="/products/<%= product.slug %>" class="product-title"
               ><%= product.title%></a
             >
             <div class="info">
               <p>$ <%= product.price %></p>
               <p>Stock:<%= product.stock %></p>
+              <p><%= product.slug %></p>
             </div>
           </div>
           <% }) %> <% } %>

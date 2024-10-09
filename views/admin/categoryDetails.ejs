@@ -16,7 +16,7 @@
             <img src="<%= category.imgurl %> " alt="<%= category.slug %> " />
           </div>
           <div class="category-info">
-            <p><%= category.title %></p>
+            <h2><%= category.title %></h2>
 
             <p>added by: <%= category.username %></p>
             <div class="category-categories">
@@ -40,7 +40,7 @@
               <a
                 href="/admin/dashboard/product/<%= product.slug %>"
                 class="product-title"
-                ><%= product.title%> <%= product.slug %>
+                ><%= product.title%>
               </a>
             </div>
             <% }) %>
