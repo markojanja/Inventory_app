@@ -55,6 +55,15 @@ class User {
       console.log(error);
     }
   }
+  async count() {
+    try {
+      const query = `SELECT COUNT(*) FROM users;`;
+      const { rows } = await pool.query(query);
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //products
@@ -210,6 +219,16 @@ class Product {
       console.log(error);
     }
   }
+
+  async count() {
+    try {
+      const query = `SELECT COUNT(*) FROM products;`;
+      const { rows } = await pool.query(query);
+      return rows[0];
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //categories
@@ -311,6 +330,15 @@ class Category {
       DELETE FROM category WHERE slug=$1
       `;
       await pool.query(query, [slug]);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  async count() {
+    try {
+      const query = `SELECT COUNT(*) FROM category;`;
+      const { rows } = await pool.query(query);
+      return rows[0];
     } catch (error) {
       console.log(error);
     }

@@ -8,10 +8,25 @@
   </head>
   <body>
     <div class="wrapper">
-      <%- include("partials/navbar") %>
+      <%- include("partials/navbar") %> <%- include('partials/sidebar') %>
       <main class="dashboard">
-        <%- include('partials/sidebar') %>
-        <h1>Welcome to admin dashboard</h1>
+        <div class="grid-container">
+          <div class="dash-card">
+            <h2>Users</h2>
+            <p><%= users.count %></p>
+            <a href="/admin/dashboard/">view more</a>
+          </div>
+          <div class="dash-card">
+            <h2>Products</h2>
+            <p><%= products.count %></p>
+            <a href="/admin/dashboard/product">view more</a>
+          </div>
+          <div class="dash-card">
+            <h2>Categories</h2>
+            <p><%= categories.count %></p>
+            <a href="/admin/dashboard/category">view more</a>
+          </div>
+        </div>
       </main>
     </div>
     <script src="/sidebar.js"></script>
