@@ -7,20 +7,42 @@
     <title>Document</title>
   </head>
   <body>
-    <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-    <form
-      action="/admin/dashboard/category/create"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <label for="title">title</label>
-      <input type="text" id="title" name="title" />
-      <label for="slug">slug</label>
-      <input type="text" id="slug" name="slug" />
-      <label for="image">image</label>
-      <input type="file" id="image" name="image" accept="image/*" />
-      <button type="submit">save</button>
-    </form>
+    <div class="wrapper">
+      <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
+      <main class="form-container">
+        <h2>Create category</h2>
+        <form
+          class="form"
+          action="/admin/dashboard/category/create"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="form-group">
+            <label for="title">title</label>
+            <input type="text" id="title" name="title" />
+          </div>
+          <div class="form-group">
+            <label for="slug">slug</label>
+            <input type="text" id="slug" name="slug" />
+          </div>
+          <div class="form-group">
+            <label for="image" class="photo-icon"
+              ><img src="/assets/photo.svg" alt="photo icon"
+            /></label>
+            <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+
+          <button class="btn-primary" type="submit">save</button>
+        </form>
+      </main>
+    </div>
+
     <script src="/main.js"></script>
     <script src="/sidebar.js"></script>
   </body>
