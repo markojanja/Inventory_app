@@ -20,7 +20,7 @@
 
             <p>added by: <%= category.username %></p>
             <div class="category-categories">
-              <a href="<%= category.slug %>/update ">Edit</a>
+              <a class="btn-edit" href="<%= category.slug %>/update ">Edit</a>
               <form action="<%= category.slug %>/delete" method="POST">
                 <button class="btn-delete" type="submit">delete</button>
               </form>

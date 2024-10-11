@@ -7,40 +7,44 @@
     <title>Products</title>
   </head>
   <body>
-    <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-    <h1>Product List</h1>
+    <div class="wrapper">
+      <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
+      <div class="container-main">
+        <h1>Product List</h1>
 
-    <% products.forEach(product => { %>
-    <div class="product-details-card" style="height: auto">
-      <div class="product-details-image">
-        <img src="<%= product.imageurl %>" alt="<%= product.title %>" />
-      </div>
-      <div class="product-info">
-        <h2><%= product.title %></h2>
-        <p>Price: <%= product.price %></p>
-        <a
-          class="btn-delete"
-          style="width: 60px"
-          href="/admin/dashboard/product/<%= product.slug %>"
-          >Details</a
-        >
-        <h3>Categories:</h3>
-        <ul class="product-categories">
-          <% product.categories.forEach(category => { %>
+        <div class="grid-container-default grid-cols-3">
+          <% products.forEach(product => { %>
+          <div class="product-details-card">
+            <div class="product-details-image">
+              <div class="overlay"></div>
+              <img src="<%= product.imageurl %>" alt="<%= product.title %>" />
+            </div>
+            <div class="product-info">
+              <h2><%= product.title %></h2>
 
-          <li>
-            <a
-              class="category-link"
-              href="/admin/dashboard/category/<%= category.slug %>"
-              ><%= category.title %></a
-            >
-          </li>
+              <ul class="product-categories">
+                <% product.categories.forEach(category => { %>
+
+                <li>
+                  <a
+                    class="category-link"
+                    href="/admin/dashboard/category/<%= category.slug %>"
+                    ><%= category.title %></a
+                  >
+                </li>
+                <% }) %>
+              </ul>
+              <a
+                class="btn-secondary"
+                href="/admin/dashboard/product/<%= product.slug %>"
+                >Details</a
+              >
+            </div>
+          </div>
           <% }) %>
-        </ul>
+        </div>
       </div>
     </div>
-    <% }) %>
-
     <script src="/sidebar.js"></script>
   </body>
 </html>

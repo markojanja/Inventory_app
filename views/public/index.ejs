@@ -30,7 +30,7 @@
       <div class="grid-container">
         <% if (products) { %> <% products.forEach(product => { %>
         <div class="grid-card">
-          <div class="grid-overlay"></div>
+          <div class="overlay"></div>
           <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
           <a href="/products/<%= product.slug %> " class="product-title"
             ><%= product.title%></a
@@ -51,7 +51,7 @@
       <div class="grid-container">
         <% if (categories) { %> <% categories.forEach(category => { %>
         <div class="grid-card">
-          <div class="grid-overlay"></div>
+          <div class="overlay"></div>
           <img src="<%= category.imgurl %> " alt="<%= category.title %> " />
           <a href="/categories/<%- category.slug %>" class="category-title"
             ><%= category.title%></a

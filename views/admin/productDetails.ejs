@@ -9,8 +9,8 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main class="product-details">
-        <div class="product-details-card">
+      <main class="product-details" style="background: #020617">
+        <div class="product-details-card" style="background: #0f172a">
           <div class="product-details-image">
             <div class="overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
@@ -32,7 +32,9 @@
               </a>
               <% }) %>
             </div>
-            <a href="/admin/dashboard/product/<%= product.slug %>/update"
+            <a
+              class="btn-edit"
+              href="/admin/dashboard/product/<%= product.slug %>/update"
               >Edit</a
             >
           </div>
