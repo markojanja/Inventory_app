@@ -7,26 +7,66 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="wrapper">
-      <%- include("partials/navbar") %> <%- include('partials/sidebar') %>
+    <%- include('partials/sidebar') %>
+    <div class="wrapper" style="align-items: center">
+      <%- include("partials/navbar") %>
       <main class="dashboard">
-        <div class="grid-container">
-          <div class="dash-card">
-            <h2>Users</h2>
-            <p><%= users.count %></p>
-            <a href="/admin/dashboard/">view more</a>
+        <section class="dash-main">
+          <div class="dash-upper">
+            <h2 class="dash-title">General info</h2>
+            <div class="grid-container-default grid-cols-3" style="height: 60%">
+              <div class="dash-card">
+                <h2>Users</h2>
+                <p><%= users.count %></p>
+                <a href="/admin/dashboard/">view more</a>
+              </div>
+              <div class="dash-card">
+                <h2>Products</h2>
+                <p><%= products.count %></p>
+                <a href="/admin/dashboard/product">view more</a>
+              </div>
+              <div class="dash-card">
+                <h2>Categories</h2>
+                <p><%= categories.count %></p>
+                <a href="/admin/dashboard/category">view more</a>
+              </div>
+            </div>
           </div>
-          <div class="dash-card">
-            <h2>Products</h2>
-            <p><%= products.count %></p>
-            <a href="/admin/dashboard/product">view more</a>
+          <div class="dash-lower">
+            <h2 class="dash-title">Product info</h2>
+            <div class="grid-container-default grid-cols-3" style="height: 60%">
+              <div class="dash-card">
+                <h2>Low on stock</h2>
+                <p><%= users.count %></p>
+                <a href="/admin/dashboard/">view more</a>
+              </div>
+              <div class="dash-card">
+                <h2>Overstock</h2>
+                <p><%= products.count %></p>
+                <a href="/admin/dashboard/product">view more</a>
+              </div>
+              <div class="dash-card">
+                <h2>Out of stock</h2>
+                <p><%= categories.count %></p>
+                <a href="/admin/dashboard/category">view more</a>
+              </div>
+            </div>
           </div>
-          <div class="dash-card">
-            <h2>Categories</h2>
-            <p><%= categories.count %></p>
-            <a href="/admin/dashboard/category">view more</a>
-          </div>
-        </div>
+        </section>
+        <aside>
+          <ul>
+            <h2>Latest products</h2>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 4</li>
+          </ul>
+          <ul>
+            <h2>Latest products</h2>
+            <li>category 1</li>
+            <li>category 2</li>
+            <li>category 3</li>
+          </ul>
+        </aside>
       </main>
     </div>
     <script src="/sidebar.js"></script>
