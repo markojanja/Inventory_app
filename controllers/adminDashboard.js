@@ -6,9 +6,9 @@ export const dashboardGet = async (req, res) => {
   const users = await User.count();
   const products = await Product.count();
   const categories = await Category.count();
-  const lowStock = await Product.countWhere("<=", 5);
+  const lowStock = await Product.countWhere("<=", 7, ">");
   const highStock = await Product.countWhere(">", 20);
-  const outOfStock = await Product.countWhere("=", 7);
+  const outOfStock = await Product.countWhere("=", 0);
   const latestProducts = await Product.findAll({ limit: 6 });
   const latestCategories = await Category.findAll({ limit: 6 });
 

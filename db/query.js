@@ -230,17 +230,74 @@ class Product {
     }
   }
 
-  async countWhere(operator, stock) {
+  async countWhere(operator, stock, option = "") {
     try {
-      // Ensure the operator is valid to prevent SQL injection
       const validOperators = ["<", ">", "<=", ">=", "="];
       if (!validOperators.includes(operator)) {
         throw new Error("Invalid operator");
       }
 
-      const query = `SELECT COUNT(*) AS count FROM products WHERE stock ${operator} $1`;
-      const { rows } = await pool.query(query, [stock]);
-      return rows[0].count; // Return the count
+      let query = `SELECT COUNT(*) AS count FROM products WHERE stock ${operator} $1`;
+
+      const queryParams = [stock];
+
+      if (option === ">") {
+        query += ` AND stock > $2`;
+        queryParams.push(0);
+      }
+
+      const { rows } = await pool.query(query, queryParams);
+      return rows[0].count;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async selectWhere(operator, stock, option = "") {
+    try {
+      const validOperators = ["<", ">", "<=", ">=", "="];
+      if (!validOperators.includes(operator)) {
+        throw new Error("Invalid operator");
+      }
+
+      // Start building the query
+      let query = `
+        SELECT 
+          p.id, 
+          p.title, 
+          p.description, 
+          p.slug,
+          p.stock,
+          p.price, 
+          p.imageurl,
+          JSON_AGG(
+            JSON_BUILD_OBJECT('title', c.title, 'slug', c.slug)
+          ) AS categories
+        FROM 
+          products p
+        LEFT JOIN 
+          products_category pc ON p.id = pc.product_id
+        LEFT JOIN 
+          category c ON pc.category_id = c.id
+        WHERE 
+          p.stock ${operator} $1`;
+
+      const queryParams = [stock];
+
+      if (option === ">") {
+        query += ` AND p.stock > $2`;
+        queryParams.push(0);
+      }
+
+      query += `
+        GROUP BY 
+          p.id
+        ORDER BY
+          p.id DESC;
+      `;
+
+      const { rows } = await pool.query(query, queryParams);
+      return rows;
     } catch (error) {
       console.log(error);
     }
