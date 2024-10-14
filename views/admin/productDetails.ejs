@@ -32,11 +32,16 @@
               </a>
               <% }) %>
             </div>
-            <a
-              class="btn-edit"
-              href="/admin/dashboard/product/<%= product.slug %>/update"
-              >Edit</a
-            >
+            <div class="product-categories">
+              <a
+                class="btn-edit"
+                href="/admin/dashboard/product/<%= product.slug %>/update"
+                >Edit</a
+              >
+              <form action="<%= product.slug %>/delete" method="POST">
+                <button class="btn-delete" type="submit">delete</button>
+              </form>
+            </div>
           </div>
         </div>
       </main>
