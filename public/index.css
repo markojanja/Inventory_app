@@ -423,6 +423,11 @@ h3 {
   background: var(--linear-gradient-primary);
 }
 
+.banner .container {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .banner-content,
 .banner-image {
   display: flex;
@@ -430,6 +435,9 @@ h3 {
   align-items: start;
   justify-content: center;
   gap: 2rem;
+}
+.banner-content {
+  flex: 1;
 }
 .banner-image img {
   padding: 2rem;
@@ -763,6 +771,7 @@ h3 {
   border: 1px solid var(--accent-color);
 }
 .dash-card p {
-  font-size: 3.5rem;
-  font-weight: bolder;
+  font-size: 5rem;
+  font-weight: 900;
+  text-align: right;
 }

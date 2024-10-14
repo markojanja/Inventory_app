@@ -9,6 +9,6 @@ export const login = passport.authenticate("local", {
 export const logout = (req, res) => {
   req.logout((err) => {
     if (err) return res.status(500).json({ message: "Error logging out" });
-    res.redirect("/admin/login");
+    res.redirect("/");
   });
 };
