@@ -37,18 +37,15 @@
             <div class="grid-container-default grid-cols-3" style="height: 60%">
               <div class="dash-card">
                 <h2>Low on stock</h2>
-                <p><%= users.count %></p>
-                <a href="/admin/dashboard/">view more</a>
+                <p><%= lowStock %></p>
               </div>
               <div class="dash-card">
                 <h2>Overstock</h2>
-                <p><%= products.count %></p>
-                <a href="/admin/dashboard/product">view more</a>
+                <p><%= highStock %></p>
               </div>
               <div class="dash-card">
                 <h2>Out of stock</h2>
-                <p><%= categories.count %></p>
-                <a href="/admin/dashboard/category">view more</a>
+                <p><%= outOfStock %></p>
               </div>
             </div>
           </div>
@@ -56,15 +53,23 @@
         <aside>
           <ul>
             <h2>Latest products</h2>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 4</li>
+            <% latestProducts.forEach(product => { %>
+            <li>
+              <a href="/admin/dashboard/product/<%= product.slug %>"
+                ><%= product.title %></a
+              >
+            </li>
+            <% }) %>
           </ul>
           <ul>
-            <h2>Latest products</h2>
-            <li>category 1</li>
-            <li>category 2</li>
-            <li>category 3</li>
+            <h2>Latest categories</h2>
+            <% latestCategories.forEach(category => { %>
+            <li>
+              <a href="/admin/dashboard/category/<%= category.slug %>"
+                ><%= category.title %></a
+              >
+            </li>
+            <% }) %>
           </ul>
         </aside>
       </main>

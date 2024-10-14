@@ -229,6 +229,22 @@ class Product {
       console.log(error);
     }
   }
+
+  async countWhere(operator, stock) {
+    try {
+      // Ensure the operator is valid to prevent SQL injection
+      const validOperators = ["<", ">", "<=", ">=", "="];
+      if (!validOperators.includes(operator)) {
+        throw new Error("Invalid operator");
+      }
+
+      const query = `SELECT COUNT(*) AS count FROM products WHERE stock ${operator} $1`;
+      const { rows } = await pool.query(query, [stock]);
+      return rows[0].count; // Return the count
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
 //categories
