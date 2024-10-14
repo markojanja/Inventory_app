@@ -5,7 +5,7 @@ const { Category } = models;
 export const getAllCategories = async (req, res) => {
   const categories = await Category.findAll({});
 
-  res.render("public/categories", { categories });
+  res.render("public/categories", { title: "Categories", categories });
 };
 
 export const categoryDetails = async (req, res) => {

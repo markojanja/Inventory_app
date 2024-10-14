@@ -5,7 +5,7 @@ const { Product } = models;
 export const getAllProducts = async (req, res) => {
   const products = await Product.findAll({});
 
-  res.render("public/products", { products });
+  res.render("public/products", { title: "Products", products });
 };
 
 export const productDetails = async (req, res) => {

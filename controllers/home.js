@@ -5,7 +5,9 @@ const home = async (req, res) => {
     const products = await models.Product.findAll({ limit: 4 });
     const categories = await models.Category.findAll({ limit: 4 });
 
-    res.status(200).render("public/index", { products, categories });
+    res
+      .status(200)
+      .render("public/index", { title: "Home", products, categories });
   } catch (error) {
     console.log(error);
   }

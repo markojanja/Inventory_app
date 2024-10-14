@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/index.css" />
-    <title>Document</title>
+    <title>Inventory - <%= title %></title>
   </head>
   <body>
     <%- include('partials/nav') %>
@@ -13,7 +13,7 @@
         <div class="banner-content">
           <h1>Welcome to Inventory</h1>
           <p>Easily and securely manage your inventory</p>
-          <a href="/about" class="btn-primary">Learn more</a>
+          <a href="#about" class="btn-primary">Learn more</a>
         </div>
         <div class="banner-image">
           <img src="/assets/banner.svg" alt="" />
@@ -60,9 +60,9 @@
         <% }) %> <% } %>
       </div>
     </section>
-    <section class="about-section">
+    <section class="about-section" style="min-height: 100vh">
       <div class="heading-container">
-        <h2>About inventory</h2>
+        <h2 id="about">About inventory</h2>
       </div>
       <div class="container">
         <div class="about-img">
