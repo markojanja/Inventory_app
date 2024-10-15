@@ -61,9 +61,6 @@ textarea {
   outline: none;
   border-radius: 0.25rem;
 }
-/* textarea {
-  overflow: hidden;
-} */
 
 input[type="file"] {
   display: none;
@@ -75,6 +72,19 @@ h3 {
 }
 
 /*utility*/
+.bg-1 {
+  background: var(--primary-color);
+}
+
+.bg-2 {
+  background: var(--bg-color-secondary);
+}
+.bg-gradient-1 {
+  background: var(--linear-gradient-primary);
+}
+.bg-gradient-2 {
+  background: var(--linear-gradient-secondary);
+}
 .flex {
   display: flex;
 }
@@ -154,8 +164,14 @@ h3 {
 .padding-2 {
   padding: 2rem;
 }
+.pt-6 {
+  padding-top: 6rem;
+}
 .margin-0-auto {
   margin: 0 auto;
+}
+.font-s-3 {
+  font-size: 3rem;
 }
 .line-h-2 {
   line-height: 2;
@@ -220,6 +236,8 @@ h3 {
   overflow: hidden;
   min-height: 300px;
   min-width: 300px;
+  max-height: 100%;
+  max-width: 100%;
   background: var(--bg-color-secondary);
   border-radius: 0.5rem;
 }
@@ -538,25 +556,9 @@ h3 {
   background: var(--linear-gradient-primary);
 }
 
-.about-content p {
-  line-height: 2;
-}
-
 /*end home*/
 
 /*about page*/
-.about-header {
-  position: relative;
-  background: var(--linear-gradient-primary);
-  min-height: 40%;
-  padding-top: 6rem;
-  display: flex;
-  align-items: start;
-  justify-content: center;
-}
-.about-header h2 {
-  font-size: 3rem;
-}
 
 .info {
   position: absolute;
