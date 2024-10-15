@@ -12,42 +12,50 @@
       <%- include("partials/navbar") %>
       <main class="flex w-90 h-90 gap-2">
         <section class="flex flex-col w-80 min-h-100 gap-2">
-          <div class="dash-upper">
+          <div
+            class="flex flex-col items-center content-center padding-2 gap-2 bg-2 border-r-1-2 h-50"
+          >
             <h2 class="w-80 margin-0-auto self-start">General info</h2>
             <div class="grid-container-default grid-cols-3" style="height: 60%">
               <div class="dash-card">
                 <h2>Users</h2>
-                <p><%= users.count %></p>
+                <p class="font-s-5 font-w-9 text-right"><%= users.count %></p>
                 <a href="/admin/dashboard/">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Products</h2>
-                <p><%= products.count %></p>
+                <p class="font-s-5 font-w-9 text-right">
+                  <%= products.count %>
+                </p>
                 <a href="/admin/dashboard/product">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Categories</h2>
-                <p><%= categories.count %></p>
+                <p class="font-s-5 font-w-9 text-right">
+                  <%= categories.count %>
+                </p>
                 <a href="/admin/dashboard/category">view more</a>
               </div>
             </div>
           </div>
-          <div class="dash-lower">
+          <div
+            class="flex flex-col items-center content-center padding-2 gap-2 bg-2 border-r-1-2 h-50"
+          >
             <h2 class="w-80 margin-0-auto self-start">Product info</h2>
             <div class="grid-container-default grid-cols-3" style="height: 60%">
               <div class="dash-card">
                 <h2>Low on stock</h2>
-                <p><%= lowStock %></p>
+                <p class="font-s-5 font-w-9 text-right"><%= lowStock %></p>
                 <a href="/admin/dashboard/product/low-stock">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Overstock</h2>
-                <p><%= highStock %></p>
+                <p class="font-s-5 font-w-9 text-right"><%= highStock %></p>
                 <a href="/admin/dashboard/product/high-stock">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Out of stock</h2>
-                <p><%= outOfStock %></p>
+                <p class="font-s-5 font-w-9 text-right"><%= outOfStock %></p>
                 <a href="/admin/dashboard/product/out-of-stock">view more</a>
               </div>
             </div>

@@ -9,7 +9,7 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main class="category-main">
+      <main class="flex flex-col items-center content-start h-100 gap-2">
         <h1>Category List</h1>
         <% if (!categories.length) { %>
         <h1>No categories yet</h1>
@@ -21,11 +21,10 @@
               <img src="<%= category.imgurl %> " alt="<%= category.slug %> " />
             </div>
 
-            <div class="category-info">
+            <div class="flex flex-col flex-1 gap-1 items-start">
               <h3><%= category.title %></h3>
               <a
-                class="btn-secondary text-center"
-                style="max-width: 100%"
+                class="btn-secondary text-center max-w-100"
                 href="/admin/dashboard/category/<%= category.slug %> "
                 >details</a
               >

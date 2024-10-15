@@ -9,17 +9,17 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main class="category-details">
+      <main class="flex flex-col flex-1 items-center content-start gap-2">
         <% if (category) { %>
         <div class="category-details-card">
           <div class="category-image">
             <img src="<%= category.imgurl %> " alt="<%= category.slug %> " />
           </div>
-          <div class="category-info">
+          <div class="flex flex-1 flex-col gap-1">
             <h2><%= category.title %></h2>
 
             <p>added by: <%= category.username %></p>
-            <div class="category-categories">
+            <div class="flex flex-1 gap-1 items-center">
               <a class="btn-edit" href="<%= category.slug %>/update ">Edit</a>
               <form action="<%= category.slug %>/delete" method="POST">
                 <button class="btn-delete" type="submit">delete</button>
