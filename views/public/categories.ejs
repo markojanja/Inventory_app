@@ -12,8 +12,8 @@
       <header class="about-header">
         <h2>Categories</h2>
       </header>
-      <section>
-        <div class="grid-container">
+      <section class="flex flex-col flex-1 gap-2">
+        <div class="grid grid-cols-4 w-80 gap-2 margin-0-auto">
           <% if (categories) { %> <% categories.forEach(category => { %>
           <div class="grid-card">
             <div class="grid-overlay"></div>

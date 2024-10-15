@@ -8,26 +8,26 @@
   </head>
   <body>
     <%- include('partials/nav') %>
-    <main class="banner">
-      <div class="container">
-        <div class="banner-content">
+    <main class="banner flex items-center content-center h-90-vh w-100 gap-2">
+      <div class="flex content-center w-80 h-90-vh margin-0-auto">
+        <div class="flex flex-col items-start content-center gap-2 flex-1">
           <h1>Welcome to Inventory</h1>
           <p>Easily and securely manage your inventory</p>
           <a href="#about" class="btn-primary">Learn more</a>
         </div>
-        <div class="banner-image">
+        <div class="flex flex-col items-start content-center gap-2">
           <img src="/assets/banner.svg" alt="" />
         </div>
       </div>
     </main>
     <section class="products-section">
-      <div class="heading-container">
+      <div class="flex w-80 items-center content-between">
         <h2 id="products">Latest products</h2>
         <a href="/products" class="heading-link"
           >See all <img src="/assets/arrow.svg" alt="arrow"
         /></a>
       </div>
-      <div class="grid-container">
+      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto">
         <% if (products) { %> <% products.forEach(product => { %>
         <div class="grid-card">
           <div class="overlay"></div>
@@ -41,14 +41,14 @@
     </section>
 
     <section class="category-section">
-      <div class="heading-container">
+      <div class="flex w-80 items-center content-between">
         <h2 id="category">Latest categories</h2>
         <a href="/categories" class="heading-link"
           >See all
           <img src="/assets/arrow.svg" alt="arrow" />
         </a>
       </div>
-      <div class="grid-container">
+      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto">
         <% if (categories) { %> <% categories.forEach(category => { %>
         <div class="grid-card">
           <div class="overlay"></div>
@@ -60,29 +60,33 @@
         <% }) %> <% } %>
       </div>
     </section>
-    <section class="about-section" style="min-height: 100vh">
-      <div class="heading-container">
+    <section
+      class="about-section flex flex-col items-center content-center gap-2 padding-2 w-100 h-90-vh"
+    >
+      <div class="flex w-80 items-center content-between">
         <h2 id="about">About inventory</h2>
       </div>
-      <div class="container">
-        <div class="about-img">
+      <div class="flex content-center w-80 h-90-vh margin-0-auto">
+        <div class="padding-2 h-100 flex-1 w-50">
           <img src="/assets/about.svg" alt="" />
         </div>
-        <div class="about-content">
+        <div
+          class="flex flex-col items-start gap-1 padding-2 h-100 flex-1 w-50"
+        >
           <h3>This project is done as part of Odin Project curriculum.</h3>
-          <p>
+          <p class="line-h-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
             tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
             consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
             quia!
           </p>
-          <p>
+          <p class="line-h-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
             tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
             consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
             quia!
           </p>
-          <p>
+          <p class="line-h-2">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem sunt
             tenetur id eaque mollitia eius, ipsam odio, error corporis aperiam
             consectetur possimus, et quae nemo sint dicta. Rerum, explicabo
