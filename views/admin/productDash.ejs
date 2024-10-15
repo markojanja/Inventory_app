@@ -9,7 +9,9 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <div class="container-main">
+      <div
+        class="flex flex-col flex-1 items-center w-100 margin-0-auto padding-2 gap-2"
+      >
         <h1>Product List</h1>
 
         <div class="grid-container-default grid-cols-3">
@@ -17,12 +19,16 @@
           <div class="product-details-card">
             <div class="product-details-image">
               <div class="overlay"></div>
-              <img src="<%= product.imageurl %>" alt="<%= product.title %>" />
+              <img
+                style="flex: 2"
+                src="<%= product.imageurl %>"
+                alt="<%= product.title %>"
+              />
             </div>
-            <div class="product-info">
+            <div class="flex flex-col flex-1 gap-1">
               <h2><%= product.title %></h2>
 
-              <ul class="product-categories">
+              <ul class="flex gap-1">
                 <% product.categories.forEach(category => { %>
 
                 <li>

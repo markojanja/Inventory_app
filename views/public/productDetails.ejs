@@ -9,20 +9,20 @@
   <body>
     <div class="wrapper">
       <%- include('partials/nav') %>
-      <main class="product-details">
+      <main class="flex flex-1 items-center content-center bg-gradient-1 gap-2">
         <div class="product-details-card">
           <div class="product-details-image">
             <div class="overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
           </div>
-          <div class="product-info">
+          <div class="flex flex-col flex-1 gap-1">
             <h2><%= product.title %></h2>
             <p><%= product.description %></p>
-            <div class="product-info-group">
+            <div class="flex content-between">
               <p>$ <%= product.price %></p>
               <p>In stock:<%= product.stock %></p>
             </div>
-            <div class="product-categories">
+            <div class="flex gap-1">
               <% product.categories.forEach(category => { %>
               <a class="category-link" href="/categories/<%= category.slug %> ">
                 <%= category.title %>

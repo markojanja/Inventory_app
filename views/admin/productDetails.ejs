@@ -9,20 +9,20 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main class="product-details" style="background: #020617">
+      <main class="flex flex-1 content-center items-center bg-1 gap-2">
         <div class="product-details-card" style="background: #0f172a">
           <div class="product-details-image">
             <div class="overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
           </div>
-          <div class="product-info">
+          <div class="flex flex-col flex-1 gap-1">
             <h2><%= product.title %></h2>
             <p><%= product.description %></p>
-            <div class="product-info-group">
+            <div class="flex content-between">
               <p>$ <%= product.price %></p>
               <p>In stock: <%= product.stock %> pcs</p>
             </div>
-            <div class="product-categories">
+            <div class="flex gap-1">
               <% product.categories.forEach(category => { %>
               <a
                 class="category-link"
@@ -32,7 +32,7 @@
               </a>
               <% }) %>
             </div>
-            <div class="product-categories">
+            <div class="flex gap-1">
               <a
                 class="btn-edit"
                 href="/admin/dashboard/product/<%= product.slug %>/update"
