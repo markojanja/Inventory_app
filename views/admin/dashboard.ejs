@@ -10,10 +10,10 @@
     <%- include('partials/sidebar') %>
     <div class="wrapper" style="align-items: center">
       <%- include("partials/navbar") %>
-      <main class="dashboard">
-        <section class="dash-main">
+      <main class="flex w-90 h-90 gap-2">
+        <section class="flex flex-col w-80 min-h-100 gap-2">
           <div class="dash-upper">
-            <h2 class="dash-title">General info</h2>
+            <h2 class="w-80 margin-0-auto self-start">General info</h2>
             <div class="grid-container-default grid-cols-3" style="height: 60%">
               <div class="dash-card">
                 <h2>Users</h2>
@@ -33,7 +33,7 @@
             </div>
           </div>
           <div class="dash-lower">
-            <h2 class="dash-title">Product info</h2>
+            <h2 class="w-80 margin-0-auto self-start">Product info</h2>
             <div class="grid-container-default grid-cols-3" style="height: 60%">
               <div class="dash-card">
                 <h2>Low on stock</h2>
@@ -53,8 +53,8 @@
             </div>
           </div>
         </section>
-        <aside>
-          <ul>
+        <aside class="flex flex-col padding-2 w-20 gap-2 bg-2 border-r-1-2">
+          <ul class="flex flex-col flex-1 gap-2">
             <h2>Latest products</h2>
             <% latestProducts.forEach(product => { %>
             <li>
@@ -64,7 +64,7 @@
             </li>
             <% }) %>
           </ul>
-          <ul>
+          <ul class="flex flex-col flex-1 gap-2">
             <h2>Latest categories</h2>
             <% latestCategories.forEach(category => { %>
             <li>
