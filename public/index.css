@@ -214,6 +214,7 @@ h3 {
   position: relative;
   display: grid;
   grid-auto-rows: 300px;
+
   @media (max-width: 1025px) {
     grid-auto-rows: 300px;
   }
@@ -223,6 +224,9 @@ h3 {
   @media (max-width: 426px) {
     grid-auto-rows: 300px;
   }
+}
+.grid-center {
+  place-content: center;
 }
 
 .grid-container-default {
@@ -246,7 +250,7 @@ h3 {
 }
 
 .grid-cols-4 {
-  grid-template-columns: repeat(auto-fit, minmax(150px, 300fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
 
   @media (max-width: 1025px) {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
