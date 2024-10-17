@@ -9,25 +9,31 @@
   <body>
     <%- include('partials/nav') %>
     <main class="banner flex items-center content-center h-90-vh w-100 gap-2">
-      <div class="flex content-center w-80 h-90-vh margin-0-auto">
+      <div
+        class="flex content-center gap-1 w-80 margin-0-auto md-gap-2 sm-flex-col sm-w-90"
+      >
         <div class="flex flex-col items-start content-center gap-2 flex-1">
           <h1>Welcome to Inventory</h1>
           <p>Easily and securely manage your inventory</p>
           <a href="#about" class="btn-primary">Learn more</a>
         </div>
-        <div class="flex flex-col items-start content-center gap-2">
+        <div
+          class="flex flex-col items-start content-center gap-2 w-50 sm-w-100"
+        >
           <img src="/assets/banner.svg" alt="" />
         </div>
       </div>
     </main>
-    <section class="products-section">
-      <div class="flex w-80 items-center content-between">
+    <section class="products-section sm-p-1">
+      <div class="flex w-80 items-center content-between sm-w-90">
         <h2 id="products">Latest products</h2>
         <a href="/products" class="heading-link"
           >See all <img src="/assets/arrow.svg" alt="arrow"
         /></a>
       </div>
-      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto">
+      <div
+        class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90"
+      >
         <% if (products) { %> <% products.forEach(product => { %>
         <div class="grid-card">
           <div class="overlay"></div>
@@ -40,15 +46,17 @@
       </div>
     </section>
 
-    <section class="category-section">
-      <div class="flex w-80 items-center content-between">
+    <section class="category-section sm-p-1">
+      <div class="flex w-80 items-center content-between sm-w-90">
         <h2 id="category">Latest categories</h2>
         <a href="/categories" class="heading-link"
           >See all
           <img src="/assets/arrow.svg" alt="arrow" />
         </a>
       </div>
-      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto">
+      <div
+        class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90"
+      >
         <% if (categories) { %> <% categories.forEach(category => { %>
         <div class="grid-card">
           <div class="overlay"></div>
@@ -61,17 +69,19 @@
       </div>
     </section>
     <section
-      class="about-section flex flex-col items-center content-center gap-2 padding-2 w-100 h-90-vh"
+      class="about-section flex flex-col items-center content-center gap-2 padding-2 w-100 h-90-vh sm-p-1"
     >
-      <div class="flex w-80 items-center content-between">
+      <div class="flex w-80 items-center content-between sm-w-90 sm-p-0-5">
         <h2 id="about">About inventory</h2>
       </div>
-      <div class="flex content-center w-80 h-90-vh margin-0-auto">
-        <div class="padding-2 h-100 flex-1 w-50">
+      <div
+        class="flex content-center w-80 h-90-vh margin-0-auto lg-flex-col md-flex-col sm-w-90"
+      >
+        <div class="h-100 flex-1 w-50 md-w-80 lg-w-100 sm-w-100 sm-p-0-5">
           <img src="/assets/about.svg" alt="" />
         </div>
         <div
-          class="flex flex-col items-start gap-1 padding-2 h-100 flex-1 w-50"
+          class="flex flex-col items-start gap-1 h-100 flex-1 w-50 lg-w-100 md-w-100 sm-w-100 sm-p-0-5"
         >
           <h3>This project is done as part of Odin Project curriculum.</h3>
           <p class="line-h-2">
