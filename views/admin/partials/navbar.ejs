@@ -1,13 +1,13 @@
 <nav class="navbar-admin">
   <div class="nav-logo-admin">
     <a href="/admin/dashboard">
-      <h2>InventoryAdmin</h2>
+      <h2 class="sm-title-sm">InventoryAdmin</h2>
     </a>
   </div>
 
   <ul class="nav-links">
     <% if (locals.user) { %>
-    <li>Hello, <%= user.username %></li>
+    <li class="sm-display-none">Hello, <%= user.username %></li>
     <li>
       <button class="menu-btn">
         <img src="/assets/menu.svg" alt="menu" />
