@@ -720,6 +720,9 @@ h3 {
   .lg-flex-col {
     flex-direction: column;
   }
+  .lg-w-80 {
+    width: 80%;
+  }
   .lg-w-90 {
     width: 90%;
   }
@@ -740,6 +743,9 @@ h3 {
   }
   .md-gap-2 {
     gap: 2rem;
+  }
+  .md-pt-5 {
+    padding-top: 5rem;
   }
 }
 @media (max-width: 426px) {
@@ -766,5 +772,8 @@ h3 {
   }
   .sm-p-0-5 {
     padding: 0.5rem;
+  }
+  .sm-bg-none {
+    background: none;
   }
 }
