@@ -71,6 +71,20 @@ h3 {
   font-weight: 900;
 }
 
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+h2 {
+  font-size: clamp(1.2rem, 2vw, 2.5rem);
+}
+h3 {
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
+}
+
+p {
+  font-size: clamp(1rem, 1.1vw, 2.5rem);
+}
+
 /*utility*/
 .bg-1 {
   background: var(--primary-color);
@@ -357,6 +371,26 @@ h3 {
   text-transform: capitalize;
   font-size: 1.2rem;
 }
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+.opn-btn {
+  display: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  @media (max-width: 426px) {
+    display: inline-block;
+  }
+}
 /*icons*/
 .photo-icon img {
   height: 2rem;
@@ -567,26 +601,6 @@ h3 {
 .sidebar-main.show {
   transform: translateX(0);
 }
-.close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 999;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: transparent;
-}
-.opn-btn {
-  display: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  background: transparent;
-  @media (max-width: 426px) {
-    display: inline-block;
-  }
-}
 
 .heading-link {
   color: var(--accent-color);
@@ -596,19 +610,6 @@ h3 {
 .heading-link img {
   height: 1rem;
   width: 1rem;
-}
-/*home*/
-.banner {
-  background: var(--linear-gradient-primary);
-}
-
-.banner h1 {
-  font-size: clamp(2rem, 5vw, 4rem);
-  color: var(--font-color);
-}
-.banner p {
-  font-size: clamp(1rem, 1.2vw, 2.5rem);
-  color: var(--font-color-muted);
 }
 
 .products-section,
@@ -620,10 +621,6 @@ h3 {
   padding: 2rem;
   align-items: center;
   justify-content: start;
-}
-
-.category-section {
-  background: var(--linear-gradient-secondary);
 }
 
 .products-section h2,
@@ -647,13 +644,6 @@ h3 {
   left: 1rem;
   z-index: 3;
 }
-
-.about-section {
-  background: var(--linear-gradient-primary);
-}
-
-/*end home*/
-
 .info {
   position: absolute;
   display: flex;
@@ -725,7 +715,6 @@ h3 {
 }
 
 /*admin page styles*/
-
 .category-details-card {
   position: relative;
   display: flex;
@@ -734,7 +723,6 @@ h3 {
   margin: 0 auto;
   gap: 1rem;
   background-color: var(--bg-color-secondary);
-  backdrop-filter: blur(20px);
   padding: 1rem;
   border-radius: 0.5rem;
 }

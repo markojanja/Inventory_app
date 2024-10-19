@@ -65,7 +65,7 @@
           class="flex flex-col padding-2 w-20 gap-2 bg-2 border-r-1-2 md-flex-row sm-flex-col md-w-100"
         >
           <ul class="flex flex-col flex-1 gap-2">
-            <h2>Latest products</h2>
+            <h3>Latest products</h3>
             <% latestProducts.forEach(product => { %>
             <li>
               <a href="/admin/dashboard/product/<%= product.slug %>"
@@ -75,7 +75,7 @@
             <% }) %>
           </ul>
           <ul class="flex flex-col flex-1 gap-2">
-            <h2>Latest categories</h2>
+            <h3>Latest categories</h3>
             <% latestCategories.forEach(category => { %>
             <li>
               <a href="/admin/dashboard/category/<%= category.slug %>"
