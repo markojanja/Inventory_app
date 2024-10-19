@@ -10,10 +10,10 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main class="form-container">
+      <main class="form-container sm-p-1">
         <h2>Edit product</h2>
         <form
-          class="form"
+          class="form md-w-60 sm-w-80"
           action="/admin/dashboard/product/<%= product.slug%>/update"
           method="post"
           enctype="multipart/form-data"
@@ -42,24 +42,28 @@
               value="<%= product.slug %>"
             />
           </div>
-          <div class="form-group">
-            <label for="stock">Stock</label>
-            <input
-              type="number"
-              id="stock"
-              name="stock"
-              value="<%= product.stock %>"
-            />
-          </div>
-          <div class="form-group">
-            <label for="price">Price</label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              step="0.01"
-              value="<%= product.price %>"
-            />
+          <div class="flex items-center w-100 content-between gap-2">
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input
+                type="number"
+                id="stock"
+                name="stock"
+                value="<%= product.stock %>"
+                class="w-100"
+              />
+            </div>
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                step="0.01"
+                value="<%= product.price %>"
+                class="w-100"
+              />
+            </div>
           </div>
           <div class="form-group">
             <label for="image" class="photo-icon"

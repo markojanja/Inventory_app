@@ -409,6 +409,10 @@ h3 {
 .form-group-textarea textarea {
   height: 100%;
 }
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
 
 /*navbars*/
 .navbar {
@@ -540,6 +544,48 @@ h3 {
 }
 .sidebar a:hover {
   color: var(--accent-color);
+}
+.sidebar-main {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  transform: translateX(-260%);
+  transition: all 0.2s ease-in-out;
+  background-color: var(--bg-color-secondary);
+  z-index: 999;
+  overflow: auto;
+
+  @media (max-width: 426px) {
+    display: flex;
+  }
+}
+.sidebar-main.show {
+  transform: translateX(0);
+}
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 999;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+}
+.opn-btn {
+  display: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: transparent;
+  @media (max-width: 426px) {
+    display: inline-block;
+  }
 }
 
 .heading-link {
