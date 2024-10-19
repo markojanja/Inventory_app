@@ -201,6 +201,12 @@ p {
 }
 .font-s-3 {
   font-size: 3rem;
+  @media (max-width: 769px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 426px) {
+    font-size: 2.2rem;
+  }
 }
 .font-s-5 {
   font-size: 5rem;
@@ -793,6 +799,9 @@ p {
   }
   .md-p-1 {
     padding: 1rem;
+  }
+  .md-p-4 {
+    padding: 4rem;
   }
 }
 @media (max-width: 426px) {
