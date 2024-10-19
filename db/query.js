@@ -330,8 +330,8 @@ class Category {
   async findAll({ limit }) {
     try {
       const query = limit
-        ? "SELECT * FROM category LIMIT $1"
-        : "SELECT * FROM category ORDER BY created_at;";
+        ? "SELECT * FROM category ORDER BY created_at DESC LIMIT $1;"
+        : "SELECT * FROM category ORDER BY created_at DESC;";
       const values = limit ? [limit] : [];
       const { rows } = await pool.query(query, values);
       return rows;
