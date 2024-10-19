@@ -96,10 +96,43 @@ export const productUpdatePost = async (req, res) => {
 
 export const productDeletePost = async (req, res) => {
   const { slug } = req.params;
-  console.log(slug);
+  // console.log(slug); for debuging
   try {
     await Product.deleteProduct(slug);
     res.redirect("/admin/dashboard/product");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const lowOnStock = async (req, res) => {
+  try {
+    const products = await Product.selectWhere("<=", 7, ">");
+    // console.log(products); for debuging
+
+    res.render("admin/productDash", { products });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const highStock = async (req, res) => {
+  try {
+    const products = await Product.selectWhere(">", 20);
+    console.log(products); // for debuging
+
+    res.render("admin/productDash", { products });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const outOfStock = async (req, res) => {
+  try {
+    const products = await Product.selectWhere("=", 0);
+    console.log(products);
+
+    res.render("admin/productDash", { products });
   } catch (error) {
     console.log(error);
   }
