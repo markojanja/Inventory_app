@@ -109,7 +109,6 @@ export const lowOnStock = async (req, res) => {
   try {
     const products = await Product.selectWhere("<=", 7, ">");
     // console.log(products); for debuging
-
     res.render("admin/productDash", { products });
   } catch (error) {
     console.log(error);
@@ -130,8 +129,7 @@ export const highStock = async (req, res) => {
 export const outOfStock = async (req, res) => {
   try {
     const products = await Product.selectWhere("=", 0);
-    console.log(products);
-
+    // console.log(products); for debuging
     res.render("admin/productDash", { products });
   } catch (error) {
     console.log(error);
