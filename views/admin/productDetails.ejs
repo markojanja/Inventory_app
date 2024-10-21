@@ -42,9 +42,11 @@
                 href="/admin/dashboard/product/<%= product.slug %>/update"
                 >Edit</a
               >
+              <% if (locals.user.admin) { %>
               <form action="<%= product.slug %>/delete" method="POST">
                 <button class="btn-delete" type="submit">delete</button>
               </form>
+              <% } %>
             </div>
           </div>
         </div>

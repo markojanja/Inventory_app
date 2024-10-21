@@ -23,9 +23,11 @@
             <p>added by: <%= category.username %></p>
             <div class="flex flex-1 gap-1 items-center">
               <a class="btn-edit" href="<%= category.slug %>/update ">Edit</a>
+              <% if (locals.user.admin) { %>
               <form action="<%= category.slug %>/delete" method="POST">
                 <button class="btn-delete" type="submit">delete</button>
               </form>
+              <% } %>
             </div>
           </div>
         </div>
