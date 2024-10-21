@@ -13,7 +13,7 @@ class User {
       const fields = keys.join(", ");
       const placeholders = keys.map((_, i) => `$${i + 1}`).join(", ");
 
-      const query = `INSERT INTO users ${fields} VALUES ${placeholders} RETURNING *;`;
+      const query = `INSERT INTO users (${fields}) VALUES (${placeholders}) RETURNING *;`;
 
       const { rows } = await pool.query(query, values);
       return rows[0];

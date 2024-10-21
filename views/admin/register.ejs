@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/index.css" />
+    <title>Inventory - Register</title>
+  </head>
+  <body>
+    <main class="form-container" id="login">
+      <h2>Register</h2>
+      <form class="form md-w-60 sm-w-80" action="/admin/register" method="POST">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+
+        <button class="btn-primary" type="submit">register</button>
+      </form>
+      <a href="/">Go back to home page</a>
+    </main>
+  </body>
+</html>

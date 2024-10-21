@@ -1,4 +1,32 @@
 import passport from "../config/passport.js";
+import bcrypt from "bcrypt";
+import models from "../db/query.js";
+
+export const register = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const user = await models.User.findByName(username);
+
+    if (user) return res.render("admin/register");
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await models.User.create({
+      username: username,
+      password: hashedPassword,
+    });
+
+    if (!newUser) {
+      console.log("not saved");
+      return res.render("admin/register");
+    }
+
+    res.redirect("/admin/login");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const login = passport.authenticate("local", {
   successRedirect: "/admin/dashboard",
