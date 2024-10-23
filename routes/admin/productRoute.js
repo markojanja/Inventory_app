@@ -13,6 +13,7 @@ import {
   productUpdatePost,
 } from "../../controllers/adminProduct.js";
 import models from "../../db/query.js";
+import isAdmin from "../../middleware/isAdmin.js";
 
 const { Product } = models;
 
@@ -20,9 +21,7 @@ const router = express.Router();
 
 router.get("/", productHomeGet);
 
-router
-  .get("/create", productCreateGet)
-  .post("/create", upload.single("image"), productCreatePost);
+router.get("/create", productCreateGet).post("/create", upload.single("image"), productCreatePost);
 
 router.get("/low-stock", lowOnStock);
 router.get("/high-stock", highStock);
@@ -34,6 +33,6 @@ router
   .get("/:slug/update", productUpdateGet)
   .post("/:slug/update", upload.single("image"), productUpdatePost);
 
-router.post("/:slug/delete", productDeletePost);
+router.post("/:slug/delete", isAdmin, productDeletePost);
 
 export default router;
