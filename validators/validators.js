@@ -7,7 +7,7 @@ export const registerValidator = [
     .custom(async (value) => {
       const user = await models.User.findByName(value);
       if (user) {
-        throw new Error("Email already in use.");
+        throw new Error("Username already in use.");
       }
     })
     .notEmpty()
@@ -15,11 +15,12 @@ export const registerValidator = [
     .isAlphanumeric()
     .withMessage("Username can contain only letters and numbers.")
     .isLength({ min: 5 })
-    .withMessage("username must be at least 5 characters long.")
+    .withMessage("Username must be at least 5 characters long.")
     .escape(),
   body("password")
     .trim()
-    .notEmpty("Password is required.")
+    .notEmpty()
+    .withMessage("Password is required.")
     .isLength({ min: 5 })
     .withMessage("Password must be at least 5 charactes long.")
     .escape(),
