@@ -29,16 +29,17 @@
             <label for="image" class="photo-icon"
               ><img src="/assets/photo.svg" alt="photo icon"
             /></label>
-            <input
-              type="file"
-              id="image"
-              name="image"
-              accept="image/*"
-              style="display: none"
-            />
+            <input type="file" id="image" name="image" accept="image/*" style="display: none" />
           </div>
 
           <button class="btn-primary" type="submit">save</button>
+          <% if (locals.errors) {%>
+          <ul class="error-summary flex flex-col">
+            <% errors.forEach(function(error) { %>
+            <li class="error-msg"><%= error.msg %></li>
+            <% }); %>
+          </ul>
+          <% } %>
         </form>
       </main>
     </div>

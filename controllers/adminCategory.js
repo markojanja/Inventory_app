@@ -1,4 +1,5 @@
 import models from "../db/query.js";
+import { validationResult } from "express-validator";
 
 const { Category } = models;
 
@@ -13,16 +14,26 @@ export const createCategory = async (req, res) => {
   const id = req.user.id;
   const imgUrl = req.file ? `/uploads/${req.file.filename}` : "";
 
-  const data = {
-    title,
-    slug,
-    imgurl: imgUrl,
-    user_id: id,
-  };
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      console.log(errors.array());
+      return res.status(400).render("admin/categoryForm", { errors: errors.array() });
+    }
 
-  await Category.create(data);
+    const data = {
+      title,
+      slug,
+      imgurl: imgUrl,
+      user_id: id,
+    };
 
-  res.status(201).redirect("/admin/dashboard/category");
+    await Category.create(data);
+
+    res.status(201).redirect("/admin/dashboard/category");
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const categoryDetails = async (req, res) => {
@@ -49,13 +60,7 @@ export const categoryUpdate = async (req, res) => {
   const oldSlug = req.params.slug;
   const { id } = req.user;
   try {
-    await Category.updateCategory(
-      title,
-      slug.toLowerCase().trim(),
-      imgUrl,
-      id,
-      oldSlug
-    );
+    await Category.updateCategory(title, slug.toLowerCase().trim(), imgUrl, id, oldSlug);
     res.status(201).redirect("/admin/dashboard/category");
   } catch (error) {
     console.log(error);

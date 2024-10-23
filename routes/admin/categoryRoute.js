@@ -8,6 +8,7 @@ import {
   createCategory,
   getAllCategories,
 } from "../../controllers/adminCategory.js";
+import { validateCategory } from "../../validators/validators.js";
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router
   .get("/create", (req, res) => {
     res.status(200).render("admin/categoryForm");
   })
-  .post("/create", upload.single("image"), createCategory);
+  .post("/create", upload.single("image"), validateCategory, createCategory);
 
 router.get("/:slug", categoryDetails);
 
