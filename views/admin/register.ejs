@@ -13,11 +13,23 @@
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" id="username" name="username" required />
+          <% if (locals.errors) { %> <% const messageError = errors.find(e => e.path === 'username')
+          %> <% if (messageError){ %>
+          <div class="error-summary">
+            <p class="error-msg"><%= messageError.msg %></p>
+          </div>
+          <% } %> <% } %>
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
           <input type="password" id="password" name="password" required />
+          <% if (locals.errors) { %> <% const messageError = errors.find(e => e.path === 'password')
+          %> <% if (messageError){ %>
+          <div class="error-summary">
+            <p class="error-msg"><%= messageError.msg %></p>
+          </div>
+          <% } %> <% } %>
         </div>
 
         <button class="btn-primary" type="submit">register</button>
