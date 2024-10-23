@@ -1,7 +1,7 @@
 import { body } from "express-validator";
 import models from "../db/query.js";
 
-export const registerValidator = [
+export const validateRegister = [
   body("username")
     .trim()
     .custom(async (value) => {
@@ -24,6 +24,11 @@ export const registerValidator = [
     .isLength({ min: 5 })
     .withMessage("Password must be at least 5 charactes long.")
     .escape(),
+];
+
+export const validateLogin = [
+  body("username").trim().notEmpty().withMessage("Username is required.").escape(),
+  body("password").trim().notEmpty().withMessage("Password is required.").escape(),
 ];
 
 export const validateCategory = [

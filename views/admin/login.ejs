@@ -12,15 +12,22 @@
       <form class="form md-w-60 sm-w-80" action="/admin/login" method="POST">
         <div class="form-group">
           <label for="username">Username</label>
-          <input type="text" id="username" name="username" required />
+          <input type="text" id="username" name="username" />
         </div>
 
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <input type="password" id="password" name="password" />
         </div>
 
         <button class="btn-primary" type="submit">LogIn</button>
+        <% if (locals.errors) {%>
+        <ul class="error-summary flex flex-col">
+          <% errors.forEach(function(error) { %>
+          <li class="error-msg"><%= error.msg %></li>
+          <% }); %>
+        </ul>
+        <% } %>
       </form>
       <a href="/">Go back to home page</a>
     </main>

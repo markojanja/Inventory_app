@@ -34,10 +34,29 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = passport.authenticate("local", {
-  successRedirect: "/admin/dashboard",
-  failureRedirect: "/admin/login",
-});
+export const login = (req, res, next) => {
+  const errors = validationResult(req);
+
+  console.log(errors.array());
+
+  if (!errors.isEmpty()) {
+    return res.status(400).render("admin/login", { errors: errors.array() });
+  }
+  passport.authenticate("local", (err, user, info) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return res.status(401).render("admin/login", { errors: [{ msg: "Invalid credentials" }] });
+    }
+    req.logIn(user, (err) => {
+      if (err) {
+        return next(err);
+      }
+      return res.redirect("/admin/dashboard");
+    });
+  })(req, res, next);
+};
 
 // Logout route
 export const logout = (req, res) => {
