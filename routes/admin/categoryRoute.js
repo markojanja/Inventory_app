@@ -9,6 +9,7 @@ import {
   getAllCategories,
 } from "../../controllers/adminCategory.js";
 import { validateCategory } from "../../validators/validators.js";
+import isAdmin from "../../middleware/isAdmin.js";
 
 const router = express.Router();
 
@@ -26,6 +27,6 @@ router
   .get("/:slug/update", categoriesUpdateGet)
   .post("/:slug/update", upload.single("image"), categoryUpdate);
 
-router.post("/:slug/delete", categoryDelete);
+router.post("/:slug/delete", isAdmin, categoryDelete);
 
 export default router;

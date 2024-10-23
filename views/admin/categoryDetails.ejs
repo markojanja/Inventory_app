@@ -9,9 +9,7 @@
   <body>
     <div class="wrapper">
       <%- include('partials/navbar') %> <%- include('partials/sidebar') %>
-      <main
-        class="flex flex-col flex-1 items-center content-start gap-2 padding-2"
-      >
+      <main class="flex flex-col flex-1 items-center content-start gap-2 padding-2">
         <% if (category) { %>
         <div class="category-details-card sm-flex-col w-80 md-w-100">
           <div class="category-image">
@@ -36,16 +34,12 @@
         <% } %>
         <section>
           <% if (products.length) { %>
-          <div
-            class="grid grid-cols-3 w-80 gap-2 margin-0-auto padding-2 sm-w-100 md-w-100"
-          >
+          <div class="grid grid-cols-3 w-80 gap-2 margin-0-auto padding-2 sm-w-100 md-w-100">
             <% products.forEach(product => { %>
             <div class="grid-card">
               <div class="grid-overlay"></div>
               <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
-              <a
-                href="/admin/dashboard/product/<%= product.slug %>"
-                class="product-title"
+              <a href="/admin/dashboard/product/<%= product.slug %>" class="product-title"
                 ><%= product.title%>
               </a>
             </div>
