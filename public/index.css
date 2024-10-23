@@ -402,6 +402,14 @@ p {
   height: 2rem;
   width: 2rem;
 }
+
+.error-summary {
+  background: #f87171;
+  color: #7f1d1d;
+  border: 1px solid #7f1d1d;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+}
 /*forms*/
 .form-container {
   display: flex;

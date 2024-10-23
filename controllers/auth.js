@@ -1,14 +1,20 @@
 import passport from "../config/passport.js";
 import bcrypt from "bcrypt";
 import models from "../db/query.js";
+import { validationResult } from "express-validator";
 
 export const register = async (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = await models.User.findByName(username);
+    const errors = validationResult(req);
 
-    if (user) return res.render("admin/register");
+    if (!errors.isEmpty()) {
+      console.log(errors.array());
+      return res.status(400).render("admin/register", {
+        errors: errors.array(),
+      });
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
