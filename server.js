@@ -51,6 +51,9 @@ app.use("/products", ProductRoute);
 app.use("/categories", CategoriesRoute);
 app.use("/admin", AuthRouter);
 app.use("/admin/dashboard", AdminRouter);
+app.all("*", (req, res) => {
+  res.status(404).render("404");
+});
 
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);

@@ -9,9 +9,7 @@
   <body>
     <div class="wrapper">
       <%- include('partials/nav') %> <%- include('partials/sidebar') %>
-      <header
-        class="flex items-start content-center min-h-40 bg-gradient-1 pt-6"
-      >
+      <header class="flex items-start content-center min-h-40 bg-gradient-1 pt-6">
         <h2 class="font-s-3"><%= category.title %></h2>
       </header>
       <section class="flex flex-col flex-1 gap-2">
@@ -21,14 +19,12 @@
           <div class="grid-card">
             <div class="grid-overlay"></div>
             <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
-            <a href="/products/<%= product.slug %>" class="product-title"
-              ><%= product.title%>
-            </a>
+            <a href="/products/<%= product.slug %>" class="product-title"><%= product.title%> </a>
           </div>
           <% }) %>
         </div>
         <% } else { %>
-        <div class="no-content">
+        <div class="no-content flex items-center content-center">
           <h2>There are no products in this category currently.</h2>
         </div>
         <% } %>
