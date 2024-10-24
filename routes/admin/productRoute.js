@@ -12,16 +12,16 @@ import {
   productUpdateGet,
   productUpdatePost,
 } from "../../controllers/adminProduct.js";
-import models from "../../db/query.js";
 import isAdmin from "../../middleware/isAdmin.js";
-
-const { Product } = models;
+import { validateProduct } from "../../validators/validators.js";
 
 const router = express.Router();
 
 router.get("/", productHomeGet);
 
-router.get("/create", productCreateGet).post("/create", upload.single("image"), productCreatePost);
+router
+  .get("/create", productCreateGet)
+  .post("/create", upload.single("image"), validateProduct, productCreatePost);
 
 router.get("/low-stock", lowOnStock);
 router.get("/high-stock", highStock);

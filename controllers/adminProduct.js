@@ -1,4 +1,6 @@
+import { validationResult } from "express-validator";
 import models from "../db/query.js";
+import { render } from "ejs";
 
 const { Product, Category } = models;
 
@@ -14,9 +16,17 @@ export const productCreateGet = async (req, res) => {
 };
 
 export const productCreatePost = async (req, res) => {
+  const cats = await Category.findAll({});
   const { title, description, slug, stock, price, categories } = req.body;
   const id = req.user.id;
   const imageurl = `/uploads/${req.file?.filename}`;
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(400)
+      .render("admin/productForm", { categories: cats, errors: errors.array() });
+  }
 
   const productData = {
     title,
@@ -64,8 +74,7 @@ export const productUpdateGet = async (req, res) => {
 };
 
 export const productUpdatePost = async (req, res) => {
-  const { title, description, slug, stock, price, currentImage, categories } =
-    req.body;
+  const { title, description, slug, stock, price, currentImage, categories } = req.body;
   const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
   const oldSlug = req.params.slug;
   try {

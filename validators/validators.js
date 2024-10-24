@@ -50,8 +50,37 @@ export const validateCategory = [
     .isLength({ min: 1 })
     .withMessage("Category slug can't be empty.")
     .matches(/^[A-Za-z\-]+$/)
-    .withMessage("Can only contain letters and dahses.")
+    .withMessage("Can only contain letters and dashes.")
     .isLowercase()
     .withMessage("Slug must be lowercase")
     .escape(),
+];
+
+export const validateProduct = [
+  body("title").notEmpty().withMessage("Title can't be empty.").escape(),
+  body("description").notEmpty().withMessage("Description can't be empty.").escape(),
+  body("slug")
+    .notEmpty()
+    .withMessage("Slug cant be empty.")
+    .matches(/^[A-Za-x\-]+$/)
+    .withMessage("Slug can only contain letters and dashes.")
+    .isLowercase()
+    .withMessage("Slug can only contain lowercase letters.")
+    .escape(),
+  body("stock")
+    .notEmpty()
+    .withMessage("Stock can't be empty.")
+    .isNumeric()
+    .withMessage("Stock must be number."),
+  body("price")
+    .notEmpty()
+    .withMessage("Price can't be empty.")
+    .isNumeric()
+    .withMessage("Price must be number."),
+  body("categories").custom((value, { req }) => {
+    if (!req.body.categories || req.body.categories.length === 0) {
+      throw new Error("Must select at least one category.");
+    }
+    return true;
+  }),
 ];
