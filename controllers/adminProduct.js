@@ -21,11 +21,21 @@ export const productCreatePost = async (req, res) => {
   const id = req.user.id;
   const imageurl = `/uploads/${req.file?.filename}`;
 
+  const catArr = typeof categories === "undefined" ? [] : [...req.body.categories];
+
   const errors = validationResult(req);
+  console.log(categories);
   if (!errors.isEmpty()) {
-    return res
-      .status(400)
-      .render("admin/productForm", { categories: cats, errors: errors.array() });
+    return res.status(400).render("admin/productForm", {
+      categories: cats,
+      errors: errors.array(),
+      title,
+      description,
+      slug,
+      stock,
+      price,
+      catArr,
+    });
   }
 
   const productData = {

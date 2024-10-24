@@ -19,24 +19,30 @@
         >
           <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" id="title" name="title" />
+            <input type="text" id="title" name="title" value="<%= typeof title!==
+            "undefined"?title:''%> " />
           </div>
           <div class="form-group-textarea">
             <label for="description">Description</label>
-            <textarea name="description" id="description"></textarea>
+            <textarea name="description" id="description">
+<%= typeof description!=="undefined"?description:''%></textarea
+            >
           </div>
           <div class="form-group">
             <label for="slug">Slug</label>
-            <input type="text" id="slug" name="slug" />
+            <input type="text" id="slug" name="slug" value="<%= typeof slug!==
+            "undefined"?slug:''%>" />
           </div>
           <div class="flex items-center content-between gap-2">
             <div class="form-group w-100">
               <label for="stock">Stock</label>
-              <input type="number" id="stock" name="stock" class="w-100" />
+              <input type="number" id="stock" name="stock" class="w-100" value="<%= typeof stock!==
+              "undefined"?stock:''%>" />
             </div>
             <div class="form-group w-100">
               <label for="price">Price</label>
-              <input type="number" id="price" name="price" step="0.01" class="w-100" />
+              <input type="number" id="price" name="price" step="0.01" class="w-100" value="<%=
+              typeof price!== "undefined"?price:''%>" />
             </div>
           </div>
           <div class="form-group">
@@ -50,12 +56,9 @@
             <div class="form-group-checkbox">
               <% categories.forEach(category => { %>
               <div>
-                <input
-                  type="checkbox"
-                  name="categories"
-                  id="<%= category.title %>"
-                  value="<%= category.id %>"
-                />
+                <input type="checkbox" name="categories" id="<%= category.title %>" value="<%=
+                category.id %>" <%= typeof catArr !== 'undefined' ? catArr.some(c => c ===
+                category.id) ? 'checked' : '' :''%> />
                 <label for="<%= category.title %>"><%= category.title %></label>
               </div>
               <% }) %>
