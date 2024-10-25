@@ -3,13 +3,17 @@ import { validationResult } from "express-validator";
 
 const { Category } = models;
 
-export const getAllCategories = async (req, res) => {
-  const categories = await Category.findAll({});
+export const getAllCategories = async (req, res, next) => {
+  try {
+    const categories = await Category.findAll({});
 
-  res.render("admin/categoryDash", { categories });
+    res.render("admin/categoryDash", { categories });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const createCategory = async (req, res) => {
+export const createCategory = async (req, res, next) => {
   const { title, slug } = req.body;
   const id = req.user.id;
   const imgUrl = req.file ? `/uploads/${req.file.filename}` : "";
@@ -18,7 +22,7 @@ export const createCategory = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       console.log(errors.array());
-      return res.status(400).render("admin/categoryForm", { errors: errors.array() });
+      return res.status(400).render("admin/categoryForm", { errors: errors.array(), title, slug });
     }
 
     const data = {
@@ -32,11 +36,11 @@ export const createCategory = async (req, res) => {
 
     res.status(201).redirect("/admin/dashboard/category");
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-export const categoryDetails = async (req, res) => {
+export const categoryDetails = async (req, res, next) => {
   const { slug } = req.params;
 
   try {
@@ -46,15 +50,20 @@ export const categoryDetails = async (req, res) => {
     res.status(200).render("admin/categoryDetails", { category, products });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
-export const categoriesUpdateGet = async (req, res) => {
-  const category = await Category.findSlug(req.params.slug);
-  res.status(200).render("admin/categoryUpdateForm", { category });
+export const categoriesUpdateGet = async (req, res, next) => {
+  try {
+    const category = await Category.findSlug(req.params.slug);
+    res.status(200).render("admin/categoryUpdateForm", { category });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const categoryUpdate = async (req, res) => {
+export const categoryUpdate = async (req, res, next) => {
   const { title, slug, currentImage } = req.body;
   const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
   const oldSlug = req.params.slug;
@@ -63,11 +72,11 @@ export const categoryUpdate = async (req, res) => {
     await Category.updateCategory(title, slug.toLowerCase().trim(), imgUrl, id, oldSlug);
     res.status(201).redirect("/admin/dashboard/category");
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
 
-export const categoryDelete = async (req, res) => {
+export const categoryDelete = async (req, res, next) => {
   const { slug } = req.params;
 
   try {
@@ -77,5 +86,6 @@ export const categoryDelete = async (req, res) => {
     res.redirect("/admin/dashboard");
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };

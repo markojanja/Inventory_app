@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import models from "../db/query.js";
 import { validationResult } from "express-validator";
 
-export const register = async (req, res) => {
+export const register = async (req, res, next) => {
   const { username, password } = req.body;
 
   try {
@@ -31,6 +31,7 @@ export const register = async (req, res) => {
     res.redirect("/admin/login");
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 

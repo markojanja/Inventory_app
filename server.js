@@ -16,6 +16,7 @@ import AdminRouter from "./routes//admin/adminRoute.js";
 //custom middleware
 import setHeaders from "./middleware/setHeaders.js";
 import getUser from "./middleware/getUser.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -54,6 +55,7 @@ app.use("/admin/dashboard", AdminRouter);
 app.all("*", (req, res) => {
   res.status(404).render("404");
 });
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`server is running on http://localhost:${PORT}`);

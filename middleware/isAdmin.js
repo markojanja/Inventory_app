@@ -1,8 +1,8 @@
 const isAdmin = (req, res, next) => {
   if (req.user && req.user.admin === false) {
-    const status = 403;
+    const statusCode = 403;
     const message = "Forbidden";
-    return res.status(status).render("error", { title: "Error", status, message });
+    return res.status(statusCode).render("error", { title: "Error", statusCode, message });
   }
   next();
 };

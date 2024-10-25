@@ -1,21 +1,29 @@
 import { validationResult } from "express-validator";
 import models from "../db/query.js";
-import { render } from "ejs";
 
 const { Product, Category } = models;
 
-export const productHomeGet = async (req, res) => {
-  const products = await Product.findAll({});
+export const productHomeGet = async (req, res, next) => {
+  try {
+    const products = await Product.findAll({});
 
-  res.render("admin/productDash", { products });
+    res.render("admin/productDash", { products });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const productCreateGet = async (req, res) => {
-  const categories = await Category.findAll({});
-  res.status(200).render("admin/productForm", { categories });
+export const productCreateGet = async (req, res, next) => {
+  try {
+    const categories = await Category.findAll({});
+
+    res.status(200).render("admin/productForm", { categories });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const productCreatePost = async (req, res) => {
+export const productCreatePost = async (req, res, next) => {
   const cats = await Category.findAll({});
   const { title, description, slug, stock, price, categories } = req.body;
   const id = req.user.id;
@@ -59,12 +67,13 @@ export const productCreatePost = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    next(error);
   }
 
   res.redirect("/admin/dashboard/product");
 };
 
-export const productDetails = async (req, res) => {
+export const productDetails = async (req, res, next) => {
   const { slug } = req.params;
   try {
     const product = await Product.findBySlug(slug);
@@ -72,18 +81,23 @@ export const productDetails = async (req, res) => {
     res.status(200).render("admin/productDetails", { product });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
 export const productUpdateGet = async (req, res) => {
   const { slug } = req.params;
-  const product = await Product.findBySlug(slug);
-  const categories = await Category.findAll({});
+  try {
+    const product = await Product.findBySlug(slug);
+    const categories = await Category.findAll({});
 
-  res.render("admin/productUpdateForm", { product, categories });
+    res.render("admin/productUpdateForm", { product, categories });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const productUpdatePost = async (req, res) => {
+export const productUpdatePost = async (req, res, next) => {
   const { title, description, slug, stock, price, currentImage, categories } = req.body;
   const imgUrl = req.file ? `/uploads/${req.file.filename}` : currentImage;
   const oldSlug = req.params.slug;
@@ -110,27 +124,30 @@ export const productUpdatePost = async (req, res) => {
     res.redirect("/admin/dashboard/product/" + slug);
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
-export const productDeletePost = async (req, res) => {
+export const productDeletePost = async (req, res, next) => {
   const { slug } = req.params;
-  // console.log(slug); for debuging
+
   try {
     await Product.deleteProduct(slug);
     res.redirect("/admin/dashboard/product");
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
-export const lowOnStock = async (req, res) => {
+export const lowOnStock = async (req, res, next) => {
   try {
     const products = await Product.selectWhere("<=", 7, ">");
-    // console.log(products); for debuging
+
     res.render("admin/productDash", { products });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };
 
@@ -145,12 +162,16 @@ export const highStock = async (req, res) => {
   }
 };
 
-export const outOfStock = async (req, res) => {
+export const outOfStock = async (req, res, next) => {
   try {
     const products = await Product.selectWhere("=", 0);
     // console.log(products); for debuging
+    if (!Array.isArray(products)) {
+      throw new Error("Something went wrong, please try later!");
+    }
     res.render("admin/productDash", { products });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };

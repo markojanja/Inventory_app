@@ -2,10 +2,14 @@ import models from "../db/query.js";
 
 const { Product } = models;
 
-export const getAllProducts = async (req, res) => {
-  const products = await Product.findAll({});
+export const getAllProducts = async (req, res, next) => {
+  try {
+    const products = await Product.findAll({});
 
-  res.render("public/products", { title: "Products", products });
+    res.render("public/products", { title: "Products", products });
+  } catch (error) {
+    next(error);
+  }
 };
 
 export const productDetails = async (req, res) => {
@@ -16,5 +20,6 @@ export const productDetails = async (req, res) => {
     res.status(200).render("public/productDetails", { product });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };

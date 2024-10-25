@@ -2,13 +2,17 @@ import models from "../db/query.js";
 
 const { Category } = models;
 
-export const getAllCategories = async (req, res) => {
-  const categories = await Category.findAll({});
+export const getAllCategories = async (req, res, next) => {
+  try {
+    const categories = await Category.findAll({});
 
-  res.render("public/categories", { title: "Categories", categories });
+    res.render("public/categories", { title: "Categories", categories });
+  } catch (error) {
+    next(error);
+  }
 };
 
-export const categoryDetails = async (req, res) => {
+export const categoryDetails = async (req, res, next) => {
   const { slug } = req.params;
 
   try {
@@ -18,5 +22,6 @@ export const categoryDetails = async (req, res) => {
     res.status(200).render("public/categoryDetails", { category, products });
   } catch (error) {
     console.log(error);
+    next(error);
   }
 };

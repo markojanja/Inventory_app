@@ -19,11 +19,13 @@
         >
           <div class="form-group">
             <label for="title">title</label>
-            <input type="text" id="title" name="title" />
+            <input type="text" id="title" name="title" value="<%= typeof title!==
+            "undefined"?title:''%>" />
           </div>
           <div class="form-group">
             <label for="slug">slug</label>
-            <input type="text" id="slug" name="slug" />
+            <input type="text" id="slug" name="slug" value="<%= typeof slug!==
+            "undefined"?slug:''%>"/>
           </div>
           <div class="form-group">
             <label for="image" class="photo-icon"
