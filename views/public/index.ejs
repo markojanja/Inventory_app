@@ -8,20 +8,14 @@
   </head>
   <body>
     <%- include('partials/nav') %> <%- include('partials/sidebar') %>
-    <main
-      class="bg-gradient-1 flex items-center content-center h-90-vh w-100 gap-2"
-    >
-      <div
-        class="flex content-center gap-1 w-80 margin-0-auto md-gap-2 sm-flex-col sm-w-90"
-      >
+    <main class="bg-gradient-1 flex items-center content-center h-90-vh w-100 gap-2">
+      <div class="flex content-center gap-1 w-80 margin-0-auto md-gap-2 sm-flex-col sm-w-90">
         <div class="flex flex-col items-start content-center gap-2 flex-1">
           <h1>Welcome to Inventory</h1>
           <p>Easily and securely manage your inventory</p>
           <a href="#about" class="btn-primary">Learn more</a>
         </div>
-        <div
-          class="flex flex-col items-start content-center gap-2 w-50 sm-w-100"
-        >
+        <div class="flex flex-col items-start content-center gap-2 w-50 sm-w-100">
           <img src="/assets/banner.svg" alt="" />
         </div>
       </div>
@@ -33,16 +27,12 @@
           >See all <img src="/assets/arrow.svg" alt="arrow"
         /></a>
       </div>
-      <div
-        class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90"
-      >
+      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90">
         <% if (products) { %> <% products.forEach(product => { %>
         <div class="grid-card">
           <div class="overlay"></div>
           <img src="<%= product.imageurl %> " alt="<%= product.title %> " />
-          <a href="/products/<%= product.slug %> " class="product-title"
-            ><%= product.title%></a
-          >
+          <a href="/products/<%= product.slug %> " class="product-title"><%= product.title%></a>
         </div>
         <% }) %> <% } %>
       </div>
@@ -56,16 +46,12 @@
           <img src="/assets/arrow.svg" alt="arrow" />
         </a>
       </div>
-      <div
-        class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90"
-      >
+      <div class="grid grid-cols-4 w-80 gap-2 min-h-40 margin-0-auto md-w-90 sm-w-90">
         <% if (categories) { %> <% categories.forEach(category => { %>
         <div class="grid-card">
           <div class="overlay"></div>
           <img src="<%= category.imgurl %> " alt="<%= category.title %> " />
-          <a href="/categories/<%- category.slug %>" class="category-title"
-            ><%= category.title%></a
-          >
+          <a href="/categories/<%- category.slug %>" class="category-title"><%= category.title%></a>
         </div>
         <% }) %> <% } %>
       </div>
@@ -85,25 +71,22 @@
         <div
           class="flex flex-col items-start gap-1 h-100 flex-1 w-50 lg-w-100 md-w-100 sm-w-100 sm-p-0-5"
         >
-          <h3>Project oveerview:</h3>
+          <h3>Project overview:</h3>
           <p class="line-h-2">
-            This app was developed as part of The Odin Project curriculum, which
-            emphasizes practical, project-based learning in web development. The
-            aim was to gain hands-on experience by building a fully functional
-            application, using modern tools and frameworks widely adopted in the
-            industry.
+            This app was developed as part of The Odin Project curriculum, which emphasizes
+            practical, project-based learning in web development. The aim was to gain hands-on
+            experience by building a fully functional application, using modern tools and frameworks
+            widely adopted in the industry.
           </p>
           <p class="line-h-2">
-            One of the core objectives of the project was to work extensively
-            with PostgreSQL, a relational database known for its reliability and
-            flexibility. And to implement raw SQL queries to perform essential
-            CRUD operations.
+            One of the core objectives of the project was to work extensively with PostgreSQL, a
+            relational database known for its reliability and flexibility. And to implement raw SQL
+            queries to perform essential CRUD operations.
           </p>
           <p class="line-h-2">
-            Another significant aspect of the project was exploring user
-            authentication and security best practices. By integrating bcrypt
-            for password hashing and Passport.js for handling authentication, I
-            learned how to secure user credentials and manage session-based
+            Another significant aspect of the project was exploring user authentication and security
+            best practices. By integrating bcrypt for password hashing and Passport.js for handling
+            authentication, I learned how to secure user credentials and manage session-based
             authentication in a Node.js environment.
           </p>
           <a href="/about" class="btn-primary">Read more</a>

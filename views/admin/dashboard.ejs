@@ -20,20 +20,16 @@
               <div class="dash-card">
                 <h2>Users</h2>
                 <p class="font-s-5 font-w-9 text-right"><%= users.count %></p>
-                <a href="/admin/dashboard/">view more</a>
+                <a href="/admin/dashboard/users">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Products</h2>
-                <p class="font-s-5 font-w-9 text-right">
-                  <%= products.count %>
-                </p>
+                <p class="font-s-5 font-w-9 text-right"><%= products.count %></p>
                 <a href="/admin/dashboard/product">view more</a>
               </div>
               <div class="dash-card">
                 <h2>Categories</h2>
-                <p class="font-s-5 font-w-9 text-right">
-                  <%= categories.count %>
-                </p>
+                <p class="font-s-5 font-w-9 text-right"><%= categories.count %></p>
                 <a href="/admin/dashboard/category">view more</a>
               </div>
             </div>
@@ -68,9 +64,7 @@
             <h3>Latest products</h3>
             <% latestProducts.forEach(product => { %>
             <li>
-              <a href="/admin/dashboard/product/<%= product.slug %>"
-                ><%= product.title %></a
-              >
+              <a href="/admin/dashboard/product/<%= product.slug %>"><%= product.title %></a>
             </li>
             <% }) %>
           </ul>
@@ -78,9 +72,7 @@
             <h3>Latest categories</h3>
             <% latestCategories.forEach(category => { %>
             <li>
-              <a href="/admin/dashboard/category/<%= category.slug %>"
-                ><%= category.title %></a
-              >
+              <a href="/admin/dashboard/category/<%= category.slug %>"><%= category.title %></a>
             </li>
             <% }) %>
           </ul>
