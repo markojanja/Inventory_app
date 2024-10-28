@@ -84,6 +84,44 @@ h3 {
 p {
   font-size: clamp(1rem, 1.1vw, 2.5rem);
 }
+/*table*/
+
+table {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+thead {
+  background-color: var(--bg-color-secondary);
+  padding: 0.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.25rem;
+}
+thead tr {
+  display: flex;
+  gap: 1rem;
+}
+tr th:last-child,
+tr th:last-child {
+  flex: 1;
+  text-align: left;
+}
+tbody {
+  display: flex;
+  flex-direction: column;
+}
+tbody tr {
+  display: flex;
+  gap: 1rem;
+  padding: 0.5rem;
+  transition: all 0.2s ease-in;
+  font-weight: 700;
+}
+
+tbody tr:hover {
+  background-color: var(--bg-color-secondary);
+}
 
 /*utility*/
 .bg-1 {
